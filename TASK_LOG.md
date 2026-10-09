@@ -20,7 +20,7 @@ Legend: `[ ]` open · `[~]` in progress · `[x]` done · `[!]` blocked
 - [x] P0.T4 — Env validation for web, worker, cli (tests: `packages/shared/src/env.test.ts`, `apps/web/src/server/env-schema.test.ts` incl. G-SEC-13, `apps/worker/src/env.test.ts`, `apps/cli/src/env.test.ts` — 15 tests)
 - [x] P0.T5 — `packages/shared` enums, errors, API schemas, `withErrorEnvelope` (tests: 63 unit tests across `packages/shared/src/**`; line coverage 98 %)
 - [x] P0.T6 — Test harness: Vitest projects, `withTestTx`, factories, MSW replay, Playwright + axe (tests: `packages/db/test/harness.int.test.ts` 6/6, `packages/llm/src/testing/replay.test.ts` 4/4, `packages/shared/src/testing/testing.test.ts` 8/8, `apps/web/e2e/smoke.spec.ts` 1/1; CI run lands with P0.T10)
-- [ ] P0.T7 — Design tokens, fonts, dark mode, AppShell, base components, contrast script (tests: shell visual snapshot)
+- [x] P0.T7 — Design tokens, fonts, dark mode, AppShell, base components, contrast script (tests: `e2e/visual.spec.ts` 7/7 — 4 baselines at 1440/390 × light/dark with axe, theme persistence, no horizontal scroll at 390; component tests `Button.test.tsx`, `States.test.tsx` 5/5; `pnpm design:contrast` 60/60)
 - [ ] P0.T8 — Fixture corpus and `pnpm db:seed` scenarios (tests: row-count test)
 - [ ] P0.T9 — Health route, `policy.ts`, admin session, request IDs, security headers (tests: T-F13-AC1, headers spec)
 - [ ] P0.T10 — CI workflow, Vercel + Neon previews, Sentry + PostHog wiring (tests: green CI on PR)
@@ -68,6 +68,9 @@ No blockers.
 | 2026-10-10 | Enum tuples live once in `packages/shared/src/enums.ts`; Drizzle's `pgEnum`s are built from them | Database and API can't drift; the schema integration test also checks the tuples against Postgres | ARCHITECTURE §4.1 |
 | 2026-10-10 | Provider SDK clients capture `fetch` when constructed; tests must construct them after MSW `listen()`, and `packages/llm` (P1.T8) should pass `fetch: (...a) => globalThis.fetch(...a)` | Found in P0.T6: clients built at import time bypassed MSW and hit the real API (with fake keys) | TESTING_GUIDE §4.3 |
 | 2026-10-10 | `pnpm db:reset` refuses non-local hosts unless `--allow-remote` is passed | Destructive command; INSTRUCTIONS §12 | INSTRUCTIONS §5 |
+| 2026-10-10 | Dark `--border-strong` raised from `#6E685E` to `#726C62` | `pnpm design:contrast` measured 2.94:1 on `--surface-raised` (inputs in dialogs/drawer); now 3.12:1 | DESIGN_SYSTEM §2 |
+| 2026-10-10 | The top bar lists only pages that exist; About, Evals and "Run live" are added in the tasks that build those pages (P0.T11, P5.T7, P4.T6) | No dead links in a public shell; typed routes enforce it | DESIGN_SYSTEM §8 (Navigation) unchanged — end state is the same |
+| 2026-10-10 | No theme library: a 1-line inline script sets `.dark` before paint, a toggle writes `localStorage` (try/catch) | Avoids a new dependency; the script is nonce-gated under the CSP added in P0.T9 | — |
 | 2026-10-09 | G-PRIV-04: both providers are used via API accounts. Anthropic's commercial terms and OpenAI's API data policy exclude API inputs/outputs from model training by default; no opt-in will be enabled. Rayhan to confirm neither org has opted into data sharing when keys are created. | Privacy of creator content sent to providers | EVAL_GUARDRAILS §8 |
 
 ## Session Log

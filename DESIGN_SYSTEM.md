@@ -30,7 +30,7 @@ Defined as CSS variables in `apps/web/src/app/globals.css` and exposed to Tailwi
 | `--surface` | `#FCFAF6` | `#1A1917` | panels, cards |
 | `--surface-raised` | `#FFFFFF` | `#22201D` | drawer, dialogs, popovers |
 | `--border` | `#E4DED3` | `#2E2B27` | dividers, card borders (decorative) |
-| `--border-strong` | `#8C8579` | `#6E685E` | input borders, focusable outlines (≥ 3:1) |
+| `--border-strong` | `#8C8579` | `#726C62` | input borders, focusable outlines (≥ 3:1) |
 | `--text` | `#1A1814` | `#EDE8DF` | primary text |
 | `--text-muted` | `#5E584E` | `#A39D92` | secondary text, timeline |
 | `--primary` | `#1A1814` | `#EDE8DF` | primary buttons (ink) |
@@ -48,7 +48,7 @@ Defined as CSS variables in `apps/web/src/app/globals.css` and exposed to Tailwi
 | `--verdict-rejected-fg` / `-bg` | `#9B1C14` / `#FBE4E1` | `#F59A90` / `#33171A` | verdict stamp |
 | `--chart-1` … `--chart-5` | `#1A1814`, `#1F4F99`, `#B7791F`, `#14613C`, `#9C8F7A` | `#EDE8DF`, `#8DB4F5`, `#F0BE6A`, `#7AD9A6`, `#8C8579` | series (recent window always `--chart-1`, prior window `--chart-5`) |
 
-Verified contrast (WCAG): text/background 16.2 (light) · 15.5 (dark); muted/background 6.4 · 7.0; muted/surface-raised 7.0 · 6.0; every verdict fg/bg pair ≥ 6.3 (light) · ≥ 7.7 (dark); text on highlight 14.4 · 8.9; info/background 7.3 · 9.0; border-strong/background 3.3 · 3.4. Requirement: text ≥ 4.5:1; UI boundaries ≥ 3:1. Never convey verdict by colour alone — stamps always include the word.
+Verified contrast (WCAG): text/background 16.2 (light) · 15.5 (dark); muted/background 6.4 · 7.0; muted/surface-raised 7.0 · 6.0; every verdict fg/bg pair ≥ 6.3 (light) · ≥ 7.7 (dark); text on highlight 14.4 · 8.9; info/background 7.3 · 9.0; border-strong/background 3.3 · 3.6; border-strong/surface-raised 3.7 · 3.1 (dark value raised from `#6E685E`, which measured 2.94 on surface-raised). `pnpm design:contrast` checks 60 pairs across both themes. Requirement: text ≥ 4.5:1; UI boundaries ≥ 3:1. Never convey verdict by colour alone — stamps always include the word.
 
 ## 3. Typography
 

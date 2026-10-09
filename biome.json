@@ -1,6 +1,10 @@
 {
   "$schema": "https://biomejs.dev/schemas/2.5.15/schema.json",
-  "vcs": { "enabled": true, "clientKind": "git", "useIgnoreFile": true },
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
+  },
   "files": {
     "includes": [
       "**",
@@ -21,14 +25,24 @@
     "lineWidth": 100
   },
   "javascript": {
-    "formatter": { "quoteStyle": "double", "semicolons": "always", "trailingCommas": "all" }
+    "formatter": {
+      "quoteStyle": "double",
+      "semicolons": "always",
+      "trailingCommas": "all"
+    }
   },
   "css": {
-    "parser": { "tailwindDirectives": true }
+    "parser": {
+      "tailwindDirectives": true
+    }
   },
   "assist": {
     "enabled": true,
-    "actions": { "source": { "organizeImports": "on" } }
+    "actions": {
+      "source": {
+        "organizeImports": "on"
+      }
+    }
   },
   "linter": {
     "enabled": true,
@@ -37,11 +51,18 @@
       "complexity": {
         "noExcessiveCognitiveComplexity": {
           "level": "error",
-          "options": { "maxAllowedComplexity": 15 }
+          "options": {
+            "maxAllowedComplexity": 15
+          }
         }
       },
       "suspicious": {
-        "noConsole": { "level": "error", "options": { "allow": [] } },
+        "noConsole": {
+          "level": "error",
+          "options": {
+            "allow": []
+          }
+        },
         "noExplicitAny": "error"
       },
       "style": {
@@ -51,13 +72,13 @@
           "level": "error",
           "options": {
             "paths": {
-              "axios": "Use native fetch or the provider SDK (INSTRUCTIONS §9).",
-              "request": "Use native fetch (INSTRUCTIONS §9).",
-              "moment": "Use date-fns (INSTRUCTIONS §9).",
-              "lodash": "Use native code or a per-method import (INSTRUCTIONS §9).",
-              "langchain": "The agent loop is hand-written (INSTRUCTIONS §9).",
-              "@langchain/core": "The agent loop is hand-written (INSTRUCTIONS §9).",
-              "llamaindex": "The agent loop is hand-written (INSTRUCTIONS §9)."
+              "axios": "Use native fetch or the provider SDK (INSTRUCTIONS \u00a79).",
+              "request": "Use native fetch (INSTRUCTIONS \u00a79).",
+              "moment": "Use date-fns (INSTRUCTIONS \u00a79).",
+              "lodash": "Use native code or a per-method import (INSTRUCTIONS \u00a79).",
+              "langchain": "The agent loop is hand-written (INSTRUCTIONS \u00a79).",
+              "@langchain/core": "The agent loop is hand-written (INSTRUCTIONS \u00a79).",
+              "llamaindex": "The agent loop is hand-written (INSTRUCTIONS \u00a79)."
             }
           }
         }
@@ -77,8 +98,8 @@
               "level": "error",
               "options": {
                 "paths": {
-                  "@unmet/db/schema": "Agent tools read the corpus only through as-of scoped repositories (ARCHITECTURE §10.4).",
-                  "drizzle-orm": "Agent tools read the corpus only through as-of scoped repositories (ARCHITECTURE §10.4)."
+                  "@unmet/db/schema": "Agent tools read the corpus only through as-of scoped repositories (ARCHITECTURE \u00a710.4).",
+                  "drizzle-orm": "Agent tools read the corpus only through as-of scoped repositories (ARCHITECTURE \u00a710.4)."
                 }
               }
             }
@@ -88,7 +109,23 @@
     },
     {
       "includes": ["apps/cli/src/**", "scripts/**", "apps/web/scripts/**"],
-      "linter": { "rules": { "suspicious": { "noConsole": "off" } } }
+      "linter": {
+        "rules": {
+          "suspicious": {
+            "noConsole": "off"
+          }
+        }
+      }
+    },
+    {
+      "includes": ["apps/web/src/app/globals.css"],
+      "linter": {
+        "rules": {
+          "complexity": {
+            "noImportantStyles": "off"
+          }
+        }
+      }
     }
   ]
 }
