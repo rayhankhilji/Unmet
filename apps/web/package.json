@@ -12,9 +12,13 @@
     "design:contrast": "node scripts/contrast.ts"
   },
   "dependencies": {
+    "@t3-oss/env-nextjs": "^0.13.11",
+    "@unmet/db": "workspace:*",
+    "@unmet/shared": "workspace:*",
     "next": "^16.4.0",
     "react": "^19.3.0",
-    "react-dom": "^19.3.0"
+    "react-dom": "^19.3.0",
+    "zod": "^4.6.5"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.3",

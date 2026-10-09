@@ -17,7 +17,7 @@ Legend: `[ ]` open · `[~]` in progress · `[x]` done · `[!]` blocked
 - [x] P0.T1 — Verify current stable versions and model IDs/prices; record in Decisions and `pricing.ts` (tests: typecheck; `packages/llm/src/pricing.test.ts` 7/7)
 - [x] P0.T2 — Scaffold pnpm + Turborepo monorepo, strict tsconfig, Biome, env examples (tests: `pnpm install && pnpm typecheck && pnpm lint` green, 11/11 typecheck tasks)
 - [x] P0.T3 — Docker pgvector, Drizzle config, migrations 0000 + 0001 for all tables (tests: `packages/db/test/schema.int.test.ts` 3/3 — 22 tables, 21 enums, pgvector, HNSW/GIN/queue indexes)
-- [ ] P0.T4 — Env validation for web, worker, cli (tests: env schema unit tests)
+- [x] P0.T4 — Env validation for web, worker, cli (tests: `packages/shared/src/env.test.ts`, `apps/web/src/server/env-schema.test.ts` incl. G-SEC-13, `apps/worker/src/env.test.ts`, `apps/cli/src/env.test.ts` — 15 tests)
 - [ ] P0.T5 — `packages/shared` enums, errors, API schemas, `withErrorEnvelope` (tests: schema unit tests)
 - [ ] P0.T6 — Test harness: Vitest projects, `withTestTx`, factories, MSW replay, Playwright + axe (tests: sample tests in CI)
 - [ ] P0.T7 — Design tokens, fonts, dark mode, AppShell, base components, contrast script (tests: shell visual snapshot)

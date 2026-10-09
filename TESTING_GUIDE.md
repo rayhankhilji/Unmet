@@ -53,7 +53,7 @@ APP_URL=http://localhost:3000
 LLM_MODE=replay
 ```
 
-Test database: each Vitest worker creates schema `test_<workerId>` from migrations at start; each test runs inside a transaction rolled back at the end (`withTestTx`). E2E uses database `unmet_e2e`, reset and seeded by `pnpm db:reset --env e2e && pnpm db:seed --env e2e` in Playwright's `globalSetup`.
+Test database: Vitest's global setup migrates a template database (`unmet_test_template`); each Vitest worker clones it once as `unmet_test_w<poolId>`, and each test runs inside a transaction rolled back at the end (`withTestTx`). Code under test that resolves the database through `resolveDb()` joins that transaction. If port 5433 is taken locally, start Postgres with `UNMET_DB_PORT=<port> pnpm db:up` and point your `.env.local` / `.env.test` at it. E2E uses database `unmet_e2e`, reset and seeded by `pnpm db:reset --env e2e && pnpm db:seed --env e2e` in Playwright's `globalSetup`.
 
 `LLM_MODE`: `replay` (default in tests; serve `fixtures/llm/*.json`, fail on unknown request hash), `record` (call real APIs and write fixtures; manual only), `live` (evals and real runs).
 

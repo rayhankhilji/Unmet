@@ -8,5 +8,10 @@
   },
   "devDependencies": {
     "tsx": "^4.23.15"
+  },
+  "dependencies": {
+    "@unmet/db": "workspace:*",
+    "@unmet/shared": "workspace:*",
+    "zod": "^4.6.5"
   }
 }
