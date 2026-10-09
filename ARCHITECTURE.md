@@ -49,35 +49,35 @@ flowchart LR
 | Layer | Choice | Version | Rationale |
 |---|---|---|---|
 | Runtime | Node.js | 24 LTS | Current LTS; native fetch, stable test runner support |
-| Language | TypeScript, `strict`, `noUncheckedIndexedAccess` | 5.x | One language across web, worker, CLI, evals |
+| Language | TypeScript, `strict`, `noUncheckedIndexedAccess` | 6.0 | One language across web, worker, CLI, evals |
 | Package manager / monorepo | pnpm workspaces + Turborepo | pnpm 10, turbo 2 | Fast installs, cached tasks |
 | Web framework | Next.js App Router + React | Next 16, React 19 | Server components for fast published pages; route handlers for API |
 | Styling | Tailwind CSS | 4 | Token-driven via CSS variables |
 | Components | shadcn/ui on Radix primitives | latest CLI | Accessible, owned source |
-| Motion | Motion (`motion/react`) | 12 | Layout animations for need cards and drawer |
+| Motion | Motion (`motion/react`) | 14 | Layout animations for need cards and drawer |
 | Icons | Lucide React | latest | Consistent stroke icons |
 | Client data | TanStack Query | 5 | Polling live run events, cache |
-| Charts | Recharts | 2 | Simple time-series and bar charts |
+| Charts | Recharts | 3 | Simple time-series and bar charts |
 | Toasts / sheets | Sonner, Vaul | latest | Accessible toasts; mobile bottom sheet with drag-to-dismiss |
 | Logging / IDs / processes | pino, `uuidv7`, `execa` | latest | Structured logs, time-ordered IDs, ffmpeg invocation |
 | Validation / contracts | Zod | 4 | Shared schemas for API, tools and LLM outputs |
 | Database | PostgreSQL on Neon with `pgvector` | PG 16 | Relational + vector + full-text in one place; branching for previews |
-| ORM / migrations | Drizzle ORM + drizzle-kit | 0.4x | Typed schema, SQL-first |
+| ORM / migrations | Drizzle ORM + drizzle-kit | 0.45 / 0.31 | Typed schema, SQL-first |
 | LLM (agent, extraction, vision, judge) | Anthropic TypeScript SDK (`@anthropic-ai/sdk`) | latest | Strong tool use; structured tool outputs |
-| Transcription + embeddings | OpenAI Node SDK (`openai`) | 5.x | `whisper-1` segment timestamps; `text-embedding-3-small` |
+| Transcription + embeddings | OpenAI Node SDK (`openai`) | 7.x | `whisper-1` segment timestamps; `text-embedding-3-small` |
 | Media processing | ffmpeg / ffprobe CLI via `execa` | ffmpeg 7 | Audio extraction, keyframes, scene detection |
 | Object storage | Cloudflare R2 via `@aws-sdk/client-s3` | v3 | Cheap private storage, S3 API |
 | Rate limiting | Upstash Redis + `@upstash/ratelimit` | latest | Serverless-friendly per-IP limits |
-| Errors | Sentry (`@sentry/nextjs`, `@sentry/node`) | 9.x | Web + worker errors |
+| Errors | Sentry (`@sentry/nextjs`, `@sentry/node`) | 11.x | Web + worker errors |
 | Product analytics | PostHog (`posthog-js`) | latest | Evidence-open funnel |
-| Unit/integration tests | Vitest | 3 | Fast, TS-native |
+| Unit/integration tests | Vitest | 5 | Fast, TS-native |
 | E2E / a11y | Playwright + `@axe-core/playwright` | latest | Hero flows + accessibility |
-| Network mocks | MSW | 2 | Mock Anthropic/OpenAI in tests |
+| Network mocks | MSW | 3 | Mock Anthropic/OpenAI in tests |
 | Lint/format | Biome | 2 | One fast tool for lint + format |
 | Hosting | Vercel (web), Railway (worker, Docker with ffmpeg) | — | Low ops; worker needs long-running process |
 | CI | GitHub Actions | — | Typecheck, lint, test, build, E2E on preview |
 
-Versions are majors; P0.T1 verifies current stable versions and model IDs and records them in TASK_LOG.
+Versions are majors, verified against the npm registry in P0.T1 (exact versions in TASK_LOG → Decisions, 2026-10-09). TypeScript stays on 6.0 rather than the 7.x native port until the compiler-API consumers in this stack support it.
 
 ## 3. Component Boundaries
 

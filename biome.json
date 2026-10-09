@@ -1,0 +1,94 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.5.15/schema.json",
+  "vcs": { "enabled": true, "clientKind": "git", "useIgnoreFile": true },
+  "files": {
+    "includes": [
+      "**",
+      "!**/node_modules",
+      "!**/.next",
+      "!**/.turbo",
+      "!**/coverage",
+      "!**/test-results",
+      "!**/playwright-report",
+      "!packages/db/migrations/meta",
+      "!fixtures/llm"
+    ]
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineWidth": 100
+  },
+  "javascript": {
+    "formatter": { "quoteStyle": "double", "semicolons": "always", "trailingCommas": "all" }
+  },
+  "css": {
+    "parser": { "tailwindDirectives": true }
+  },
+  "assist": {
+    "enabled": true,
+    "actions": { "source": { "organizeImports": "on" } }
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "preset": "recommended",
+      "complexity": {
+        "noExcessiveCognitiveComplexity": {
+          "level": "error",
+          "options": { "maxAllowedComplexity": 15 }
+        }
+      },
+      "suspicious": {
+        "noConsole": { "level": "error", "options": { "allow": [] } },
+        "noExplicitAny": "error"
+      },
+      "style": {
+        "noNonNullAssertion": "error",
+        "useImportType": "error",
+        "noRestrictedImports": {
+          "level": "error",
+          "options": {
+            "paths": {
+              "axios": "Use native fetch or the provider SDK (INSTRUCTIONS §9).",
+              "request": "Use native fetch (INSTRUCTIONS §9).",
+              "moment": "Use date-fns (INSTRUCTIONS §9).",
+              "lodash": "Use native code or a per-method import (INSTRUCTIONS §9).",
+              "langchain": "The agent loop is hand-written (INSTRUCTIONS §9).",
+              "@langchain/core": "The agent loop is hand-written (INSTRUCTIONS §9).",
+              "llamaindex": "The agent loop is hand-written (INSTRUCTIONS §9)."
+            }
+          }
+        }
+      },
+      "nursery": {
+        "noFloatingPromises": "error"
+      }
+    }
+  },
+  "overrides": [
+    {
+      "includes": ["packages/agent/src/tools/**"],
+      "linter": {
+        "rules": {
+          "style": {
+            "noRestrictedImports": {
+              "level": "error",
+              "options": {
+                "paths": {
+                  "@unmet/db/schema": "Agent tools read the corpus only through as-of scoped repositories (ARCHITECTURE §10.4).",
+                  "drizzle-orm": "Agent tools read the corpus only through as-of scoped repositories (ARCHITECTURE §10.4)."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "includes": ["apps/cli/src/**", "scripts/**", "apps/web/scripts/**"],
+      "linter": { "rules": { "suspicious": { "noConsole": "off" } } }
+    }
+  ]
+}
