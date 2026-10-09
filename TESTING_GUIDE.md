@@ -91,7 +91,7 @@ Test database: Vitest's global setup migrates a template database (`unmet_test_t
 
 | Service | Strategy |
 |---|---|
-| Anthropic | `LLM_MODE=replay`: MSW handler keyed by SHA-256 of (model, system, messages, tools); fixtures in `fixtures/llm/<suite>/<hash>.json` |
+| Anthropic | `LLM_MODE=replay`: MSW handler keyed by SHA-256 of (model, system, messages, tools); fixtures in `fixtures/llm/<suite>/<hash>.json`. Helpers in `@unmet/llm/testing` (`setupLlmMocks`). Construct SDK clients after `server.listen()` — they capture `fetch` at construction |
 | OpenAI | MSW handlers returning fixture transcripts (`fixtures/transcripts/*.json`) and deterministic embeddings |
 | R2 | `STORAGE_DRIVER=fs` |
 | Upstash | `RATE_LIMIT_DRIVER=memory` with injectable clock |

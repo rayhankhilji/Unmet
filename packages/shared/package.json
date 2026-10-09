@@ -6,7 +6,8 @@
   "description": "Zod schemas, enums, error codes and API types shared by every app.",
   "exports": {
     ".": "./src/index.ts",
-    "./node": "./src/node/load-env.ts"
+    "./node": "./src/node/load-env.ts",
+    "./testing": "./src/testing/index.ts"
   },
   "scripts": {
     "typecheck": "tsc --noEmit -p ."

@@ -7,11 +7,13 @@
     "typecheck": "tsc --noEmit -p ."
   },
   "devDependencies": {
+    "@types/pg": "^8.23.1",
     "tsx": "^4.23.15"
   },
   "dependencies": {
     "@unmet/db": "workspace:*",
     "@unmet/shared": "workspace:*",
+    "pg": "^8.23.1",
     "zod": "^4.6.5"
   }
 }

@@ -25,7 +25,8 @@
     "db:reset": "pnpm --filter cli exec tsx src/main.ts db:reset",
     "db:seed": "pnpm --filter cli exec tsx src/main.ts db:seed",
     "design:contrast": "pnpm --filter web design:contrast",
-    "check:policy": "node scripts/check-policy.ts"
+    "check:policy": "node scripts/check-policy.ts",
+    "llm:record": "LLM_MODE=record vitest run"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.15",
