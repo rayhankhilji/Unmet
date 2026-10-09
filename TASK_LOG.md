@@ -1,0 +1,73 @@
+# Task Log — Unmet
+
+> Agents: update this file at the end of every task and every session. Keep the Status block current. Newest entries at the top of the Session Log.
+
+## Status
+
+- **Current phase:** P0 — Foundation
+- **Current focus:** P0.T1 — Verify current stable versions and model IDs/prices
+- **Next action:** Look up current stable majors for Node, Next.js, Tailwind, Drizzle, Zod, Anthropic and OpenAI SDKs, plus current Claude model IDs and per-token prices; record them in Decisions below and in `packages/llm/src/pricing.ts`.
+- **Blocked:** none
+- **Last updated:** 2026-10-09 by Claude (docs generated)
+
+## Current Phase Checklist
+
+Legend: `[ ]` open · `[~]` in progress · `[x]` done · `[!]` blocked
+
+- [ ] P0.T1 — Verify current stable versions and model IDs/prices; record in Decisions and `pricing.ts` (tests: typecheck)
+- [ ] P0.T2 — Scaffold pnpm + Turborepo monorepo, strict tsconfig, Biome, env examples (tests: install, typecheck, lint)
+- [ ] P0.T3 — Docker pgvector, Drizzle config, migrations 0000 + 0001 for all tables (tests: table-list integration test)
+- [ ] P0.T4 — Env validation for web, worker, cli (tests: env schema unit tests)
+- [ ] P0.T5 — `packages/shared` enums, errors, API schemas, `withErrorEnvelope` (tests: schema unit tests)
+- [ ] P0.T6 — Test harness: Vitest projects, `withTestTx`, factories, MSW replay, Playwright + axe (tests: sample tests in CI)
+- [ ] P0.T7 — Design tokens, fonts, dark mode, AppShell, base components, contrast script (tests: shell visual snapshot)
+- [ ] P0.T8 — Fixture corpus and `pnpm db:seed` scenarios (tests: row-count test)
+- [ ] P0.T9 — Health route, `policy.ts`, admin session, request IDs, security headers (tests: T-F13-AC1, headers spec)
+- [ ] P0.T10 — CI workflow, Vercel + Neon previews, Sentry + PostHog wiring (tests: green CI on PR)
+- [ ] P0.T11 — `/about` shell with stats block from seeded data (tests: T-F14-AC1, T-F14-AC2)
+- [ ] P0.T12 — **(human)** Corpus sourcing decision + `data/collection-plan.md`
+- [ ] P0.T13 — **(human)** 3–5 interviews → `docs/research/interviews.md`
+
+## Up Next
+
+Phase 1 — Corpus (F-01, F-14):
+
+- [ ] P1.T1 — **(human)** Assemble `data/manifest.csv` and `data/raw/` per the collection plan
+- [ ] P1.T2 — `pnpm manifest:check` + manifest loader (T-F01-AC4)
+- [ ] P1.T3 — `packages/storage` fs + r2 drivers; media upload stage
+- [ ] P1.T4 — Transcription stage with idempotency (T-F01-AC1, T-F01-AC2)
+- [ ] P1.T5 — Keyframe stage (4–8 frames, scene detection)
+- [ ] P1.T6 — Vision stage with `vision.keyframes.v1` (T-F01-AC1)
+- [ ] P1.T7 — Comments stage with hashed authors (T-F01-AC5)
+- [ ] P1.T8 — `packages/llm` core: structured calls, retries, fallback, cost accounting
+- [ ] P1.T9 — `pnpm ingest` orchestration (T-F01-AC1, T-F01-AC3)
+- [ ] P1.T10 — Ingest the real corpus to ≥ 95 % complete
+- [ ] P1.T11 — `/about` live corpus block (T-F14-AC1)
+
+## Blockers
+
+| ID | Task | Description | Tried | Hypotheses | Needs | Opened |
+|---|---|---|---|---|---|---|
+
+No blockers.
+
+## Decisions & Deviations
+
+| Date | Decision | Reason | Docs updated |
+|---|---|---|---|
+| 2026-10-09 | Product scoped to demand-gap detection (complaints, wishes, workarounds) with sceptic pass, brand fit and demand test; creator matching reduced to a P1 handoff | Strongest, checkable slice; avoids rebuilding Plot's Creator Intelligence | PRD §5, §6 |
+| 2026-10-09 | TypeScript end to end; Postgres-backed queue; polling for live events | Solo builder, low volume, one contract package | ARCHITECTURE ADR-001, ADR-002, ADR-005 |
+| 2026-10-09 | Numbers only from deterministic stat snapshots; `record_finding` rejects others | Core trust claim | ARCHITECTURE ADR-003, EVAL_GUARDRAILS G-AI-05 |
+
+## Session Log
+
+### 2026-10-09 — Session 0 (docs)
+- Done: Generated PRD, ARCHITECTURE, INSTRUCTIONS, DESIGN_SYSTEM, EVAL_GUARDRAILS, TESTING_GUIDE, ROADMAP, TASK_LOG, CLAUDE.md, AGENTS.md.
+- Tests: none yet.
+- Notes: Open questions Q1 (corpus sourcing) and Q2 (backtest cases) are human decisions; P0.T12 and P5.T2 cover them.
+- Next: P0.T1.
+
+## Completed Phases
+
+| Phase | Completed | Exit-criteria evidence |
+|---|---|---|
