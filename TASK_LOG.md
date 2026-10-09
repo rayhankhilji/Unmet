@@ -14,7 +14,7 @@
 
 Legend: `[ ]` open · `[~]` in progress · `[x]` done · `[!]` blocked
 
-- [ ] P0.T1 — Verify current stable versions and model IDs/prices; record in Decisions and `pricing.ts` (tests: typecheck)
+- [x] P0.T1 — Verify current stable versions and model IDs/prices; record in Decisions and `pricing.ts` (tests: typecheck; `packages/llm/src/pricing.test.ts` 7/7)
 - [ ] P0.T2 — Scaffold pnpm + Turborepo monorepo, strict tsconfig, Biome, env examples (tests: install, typecheck, lint)
 - [ ] P0.T3 — Docker pgvector, Drizzle config, migrations 0000 + 0001 for all tables (tests: table-list integration test)
 - [ ] P0.T4 — Env validation for web, worker, cli (tests: env schema unit tests)
@@ -58,6 +58,9 @@ No blockers.
 | 2026-10-09 | Product scoped to demand-gap detection (complaints, wishes, workarounds) with sceptic pass, brand fit and demand test; creator matching reduced to a P1 handoff | Strongest, checkable slice; avoids rebuilding Plot's Creator Intelligence | PRD §5, §6 |
 | 2026-10-09 | TypeScript end to end; Postgres-backed queue; polling for live events | Solo builder, low volume, one contract package | ARCHITECTURE ADR-001, ADR-002, ADR-005 |
 | 2026-10-09 | Numbers only from deterministic stat snapshots; `record_finding` rejects others | Core trust claim | ARCHITECTURE ADR-003, EVAL_GUARDRAILS G-AI-05 |
+| 2026-10-09 | P0.T1 verified versions (npm registry, 9 Oct 2026): Node 24 LTS (engines `>=24`), pnpm 10.34, Turborepo 2.11, TypeScript **6.0.3** (pinned below the 7.x native port so tools that use the compiler API — Next build type-check, drizzle-kit — stay supported; revisit in P6), Next 16.4, React 19.3, Tailwind 4.3, Zod 4.6, Drizzle ORM 0.45 / drizzle-kit 0.31, `@anthropic-ai/sdk` 0.133, `openai` 7.32, Biome 2.5, Vitest 5.0, Playwright 1.64, `@axe-core/playwright` 4.13, MSW 3.0, Motion 14.1, TanStack Query 5.104, Recharts 3.10, Sonner 2.0, Vaul 1.1, pino 10, `@sentry/nextjs`/`@sentry/node` 11.6, posthog-js 1.438, `@t3-oss/env-nextjs` 0.13, `pg` 8.23 | Docs listed majors only; several moved on (Vitest 5, MSW 3, `openai` 7, Sentry 11, Recharts 3, Motion 14) | ARCHITECTURE §2 |
+| 2026-10-09 | Model IDs and prices (USD per MTok, in / out / 5m cache write / 1h cache write / cache read): `claude-opus-5-5` 4 / 20 / 5 / 8 / 0.20 · `claude-sonnet-5-5` 2 / 10 / 2.50 / 4 / 0.20 · `claude-haiku-5-5` 0.10 / 0.50 / 0.125 / 0.20 / 0.01 for prompts ≤ 100k tokens, 0.50 / 2.50 / 0.625 / 1 / 0.05 above · `whisper-1` $0.006/audio minute · `text-embedding-3-small` $0.02/MTok | PRD Q4 defaults confirmed; Haiku 5.5 has a long-prompt rate card, handled in `priceAnthropicUsage` | `packages/llm/src/pricing.ts` |
+| 2026-10-09 | G-PRIV-04: both providers are used via API accounts. Anthropic's commercial terms and OpenAI's API data policy exclude API inputs/outputs from model training by default; no opt-in will be enabled. Rayhan to confirm neither org has opted into data sharing when keys are created. | Privacy of creator content sent to providers | EVAL_GUARDRAILS §8 |
 
 ## Session Log
 

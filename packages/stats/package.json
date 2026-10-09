@@ -1,0 +1,15 @@
+{
+  "name": "@unmet/stats",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Deterministic clustering, stat snapshots and Evidence Strength.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p ."
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

@@ -1,0 +1,15 @@
+{
+  "name": "@unmet/llm",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Model clients, prompt registry, pricing and token accounting.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p ."
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

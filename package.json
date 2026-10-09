@@ -1,0 +1,39 @@
+{
+  "name": "unmet",
+  "private": true,
+  "description": "An investigation agent that finds unmet consumer demand in short-form skincare video.",
+  "license": "MIT",
+  "type": "module",
+  "packageManager": "pnpm@10.34.6",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "turbo run dev --filter=web --filter=worker",
+    "build": "turbo run build",
+    "typecheck": "turbo run typecheck",
+    "lint": "biome check .",
+    "format": "biome check --write .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:e2e": "pnpm --filter web test:e2e",
+    "db:up": "docker compose up -d --wait db",
+    "db:down": "docker compose down",
+    "db:generate": "pnpm --filter @unmet/db generate",
+    "db:migrate": "pnpm --filter @unmet/db migrate",
+    "db:reset": "pnpm --filter cli exec tsx src/main.ts db:reset",
+    "db:seed": "pnpm --filter cli exec tsx src/main.ts db:seed",
+    "design:contrast": "pnpm --filter web design:contrast",
+    "check:policy": "node scripts/check-policy.ts"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.15",
+    "@types/node": "^24.19.2",
+    "@vitest/coverage-v8": "^5.0.3",
+    "tsx": "^4.23.15",
+    "turbo": "^2.11.7",
+    "typescript": "~6.0.3",
+    "vitest": "^5.0.3"
+  }
+}

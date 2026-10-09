@@ -1,0 +1,15 @@
+{
+  "name": "@unmet/agent",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Investigation agent loop, tools, sceptic rules and baseline.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p ."
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

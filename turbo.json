@@ -1,0 +1,39 @@
+{
+  "$schema": "https://turborepo.com/schema.json",
+  "ui": "stream",
+  "globalEnv": ["NODE_ENV", "CI", "VERCEL"],
+  "globalPassThroughEnv": [
+    "APP_URL",
+    "DATABASE_URL",
+    "DATABASE_URL_UNPOOLED",
+    "STORAGE_DRIVER",
+    "RATE_LIMIT_DRIVER",
+    "UPSTASH_REDIS_REST_URL",
+    "UPSTASH_REDIS_REST_TOKEN",
+    "DEMO_PASSCODE",
+    "ADMIN_TOKEN",
+    "ADMIN_COOKIE_SECRET",
+    "IP_HASH_SALT",
+    "PUBLIC_DEMO_MODE",
+    "LIVE_RUNS_ENABLED",
+    "DAILY_LIVE_RUN_BUDGET_USD",
+    "SENTRY_DSN",
+    "NEXT_PUBLIC_POSTHOG_KEY",
+    "NEXT_PUBLIC_POSTHOG_HOST",
+    "SKIP_ENV_VALIDATION"
+  ],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": [".next/**", "!.next/cache/**", "dist/**"]
+    },
+    "typecheck": {
+      "dependsOn": ["^typecheck"],
+      "outputs": []
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    }
+  }
+}
