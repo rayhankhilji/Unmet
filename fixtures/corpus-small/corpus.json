@@ -1,0 +1,2551 @@
+{
+  "description": "Synthetic fixture corpus for tests and UI work. Every creator, post and comment is invented; handles carry an fx_ prefix and URLs point at example.com. Not used as evidence for any real finding.",
+  "creators": [
+    {
+      "handle": "fx_dewdiaries",
+      "followerCount": 38000
+    },
+    {
+      "handle": "fx_spfscience",
+      "followerCount": 410000
+    },
+    {
+      "handle": "fx_sensitiveskinsam",
+      "followerCount": 6200
+    },
+    {
+      "handle": "fx_thebudgetbeauty",
+      "followerCount": 72000
+    },
+    {
+      "handle": "fx_derm_notes_daily",
+      "followerCount": 1600000
+    },
+    {
+      "handle": "fx_oilyandhonest",
+      "followerCount": 8900
+    },
+    {
+      "handle": "fx_glowonashoestring",
+      "followerCount": 21000
+    },
+    {
+      "handle": "fx_nightshiftskin",
+      "followerCount": 3100
+    },
+    {
+      "handle": "fx_mattefinishmo",
+      "followerCount": 230000
+    }
+  ],
+  "videos": [
+    {
+      "externalId": "fx-v01",
+      "creator": "fx_dewdiaries",
+      "postedAt": "2026-08-20T17:40:00Z",
+      "views": 48200,
+      "likes": 5100,
+      "commentsCount": 312,
+      "caption": "the only way my SPF doesn't turn my cheeks into sandpaper #sunscreen #dryskin #skincarehack",
+      "durationMs": 19000,
+      "transcript": [
+        {
+          "startMs": 0,
+          "endMs": 4200,
+          "text": "Okay so every sunscreen I own dries my cheeks out by about lunchtime."
+        },
+        {
+          "startMs": 4200,
+          "endMs": 9800,
+          "text": "So what I do now is mix a drop of my moisturiser into the sunscreen in my palm."
+        },
+        {
+          "startMs": 9800,
+          "endMs": 14500,
+          "text": "Two pumps of this, one drop of this, rub it together, and then it actually stays comfortable."
+        },
+        {
+          "startMs": 14500,
+          "endMs": 19000,
+          "text": "I know it probably dilutes the SPF. I just haven't found one that does both."
+        }
+      ],
+      "keyframes": [
+        {
+          "atMs": 500,
+          "description": "Creator holds a white sunscreen tube next to a small pump bottle of moisturiser.",
+          "onScreenText": "SPF + moisturiser hack",
+          "productsVisible": [
+            {
+              "name": "sunscreen tube",
+              "confidence": 0.82
+            },
+            {
+              "name": "moisturiser pump bottle",
+              "confidence": 0.74
+            }
+          ]
+        },
+        {
+          "atMs": 4000,
+          "description": "Close-up of a palm with white sunscreen and a drop of cream being mixed with a fingertip.",
+          "onScreenText": "",
+          "productsVisible": []
+        },
+        {
+          "atMs": 9500,
+          "description": "Creator rubs the mixture between her fingertips.",
+          "onScreenText": "",
+          "productsVisible": []
+        },
+        {
+          "atMs": 15000,
+          "description": "Creator pats the mixture onto her cheeks; the skin looks dewy.",
+          "onScreenText": "",
+          "productsVisible": []
+        }
+      ],
+      "comments": [
+        {
+          "author": "anon_rose",
+          "text": "I thought I was the only one doing this",
+          "likeCount": 812
+        },
+        {
+          "author": "anon_birch",
+          "text": "doesn't mixing it ruin the protection though?",
+          "likeCount": 240
+        },
+        {
+          "author": "anon_slate",
+          "text": "literally same, my face feels tight by 2pm",
+          "likeCount": 198
+        }
+      ],
+      "signals": [
+        {
+          "need": "dry-sunscreen",
+          "type": "workaround",
+          "needStatement": "a sunscreen that doesn't dry out skin",
+          "products": [
+            {
+              "name": "sunscreen",
+              "source": "speech"
+            },
+            {
+              "name": "moisturiser",
+              "source": "speech"
+            }
+          ],
+          "stance": "sincere",
+          "sponsored": "none",
+          "confidence": 0.8,
+          "evidence": [
+            {
+              "source": "transcript",
+              "excerpt": "So what I do now is mix a drop of my moisturiser into the sunscreen in my palm.",
+              "index": 1
+            },
+            {
+              "source": "frame",
+              "excerpt": "Close-up of a palm with white sunscreen and a drop of cream being mixed with a fingertip.",
+              "index": 1
+            }
+          ]
+        },
+        {
+          "need": "dry-sunscreen",
+          "type": "complaint",
+          "needStatement": "a sunscreen that keeps dry skin comfortable all day",
+          "products": [
+            {
+              "name": "sunscreen",
+              "source": "speech"
+            }
+          ],
+          "stance": "sincere",
+          "sponsored": "none",
+          "confidence": 0.8,
+          "evidence": [
+            {
+              "source": "transcript",
+              "excerpt": "Okay so every sunscreen I own dries my cheeks out by about lunchtime.",
+              "index": 0
+            },
+            {
+              "source": "comment",
+              "excerpt": "literally same, my face feels tight by 2pm",
+              "index": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "externalId": "fx-v02",
+      "creator": "fx_spfscience",
+      "postedAt": "2026-08-02T09:15:00Z",
+      "views": 126000,
+      "likes": 9800,
+      "commentsCount": 640,
+      "caption": "Why your sunscreen feels drying (and what people are doing about it) #spf #skinscience",
+      "durationMs": 23000,
+      "transcript": [
+        {
+          "startMs": 0,
+          "endMs": 5000,
+          "text": "A lot of you asked why chemical sunscreens can feel drying on already dry skin."
+        },
+        {
+          "startMs": 5000,
+          "endMs": 11000,
+          "text": "Part of it is the alcohol and the film formers that help it set and stay put."
+        },
+        {
+          "startMs": 11000,
+          "endMs": 17500,
+          "text": "I keep seeing people layer a rich moisturiser and wait ten minutes, or even mix them together."
+        },
+        {
+          "startMs": 17500,
+          "endMs": 23000,
+          "text": "Honestly I'd love a high SPF that's formulated to be the moisturiser too, so nobody has to do that."
+        }
+      ],
+      "keyframes": [
+        {
+          "atMs": 500,
+          "description": "Creator at a desk with a whiteboard reading 'why SPF dries'.",
+          "onScreenText": "why SPF dries",
+          "productsVisible": []
+        },
+        {
+          "atMs": 6000,
+          "description": "Whiteboard diagram showing alcohol and film formers in a sunscreen.",
+          "onScreenText": "",
+          "productsVisible": []
+        },
+        {
+          "atMs": 12000,
+          "description": "Split screen of a moisturiser jar and a sunscreen bottle with a plus sign between them.",
+          "onScreenText": "layer or mix?",
+          "productsVisible": [
+            {
+              "name": "moisturiser jar",
+              "confidence": 0.7
+            },
+            {
+              "name": "sunscreen bottle",
+              "confidence": 0.71
+            }
+          ]
+        },
+        {
+          "atMs": 18000,
+          "description": "Creator gestures to camera; caption reads 'one product please'.",
+          "onScreenText": "one product please",
+          "productsVisible": []
+        }
+      ],
+      "comments": [
+        {
+          "author": "anon_fern",
+          "text": "Please someone make this, I'm tired of two steps",
+          "likeCount": 1203
+        },
+        {
+          "author": "anon_quartz",
+          "text": "the waiting ten minutes part is so real",
+          "likeCount": 377
+        }
+      ],
+      "signals": [
+        {
+          "need": "dry-sunscreen",
+          "type": "workaround",
+          "needStatement": "a sunscreen that doesn't dry out skin",
+          "products": [
+            {
+              "name": "moisturiser",
+              "source": "speech"
+            },
+            {
+              "name": "sunscreen",
+              "source": "speech"
+            }
+          ],
+          "stance": "sincere",
+          "sponsored": "none",
+          "confidence": 0.8,
+          "evidence": [
+            {
+              "source": "transcript",
+              "excerpt": "I keep seeing people layer a rich moisturiser and wait ten minutes, or even mix them together.",
+              "index": 2
+            },
+            {
+              "source": "frame",
+              "excerpt": "Split screen of a moisturiser jar and a sunscreen bottle with a plus sign between them.",
+              "index": 2
+            }
+          ]
+        },
+        {
+          "need": "dry-sunscreen",
+          "type": "wish",
+          "needStatement": "a high-SPF sunscreen that also works as a moisturiser",
+          "products": [],
+          "stance": "sincere",
+          "sponsored": "none",
+          "confidence": 0.8,
+          "evidence": [
+            {
+              "source": "transcript",
+              "excerpt": "Honestly I'd love a high SPF that's formulated to be the moisturiser too, so nobody has to do that.",
+              "index": 3
+            },
+            {
+              "source": "comment",
+              "excerpt": "Please someone make this, I'm tired of two steps",
+              "index": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "externalId": "fx-v03",
+      "creator": "fx_sensitiveskinsam",
+      "postedAt": "2026-07-21T20:05:00Z",
+      "views": 9400,
+      "likes": 880,
+      "commentsCount": 74,
+      "caption": "sensitive skin evening routine, honest version #sensitiveskin",
+      "durationMs": 18500,
+      "transcript": [
+        {
+          "startMs": 0,
+          "endMs": 4500,
+          "text": "Mineral sunscreen is the only thing my skin tolerates but it's so drying."
+        },
+        {
+          "startMs": 4500,
+          "endMs": 9000,
+          "text": "I put a layer of barrier cream underneath first, otherwise it flakes by midday."
+        },
+        {
+          "startMs": 9000,
+          "endMs": 14000,
+          "text": "Getting it off at night is its own problem. I use an oil first and then a gentle milk cleanser."
+        },
+        {
+          "startMs": 14000,
+          "endMs": 18500,
+          "text": "Double cleansing every night is a lot for skin that's already irritated."
+        }
+      ],
+      "keyframes": [
+        {
+          "atMs": 500,
+          "description": "Bathroom shelf with a mineral sunscreen, a barrier cream tube and a cleansing oil.",
+          "onScreenText": "",
+          "productsVisible": [
+            {
+              "name": "mineral sunscreen",
+              "confidence": 0.8
+            },
+            {
+              "name": "barrier cream",
+              "confidence": 0.69
+            },
+            {
+              "name": "cleansing oil",
+              "confidence": 0.66
+            }
+          ]
+        },
+        {
+          "atMs": 5000,
+          "description": "Creator applies a thick cream before sunscreen.",
+          "onScreenText": "",
+          "productsVisible": []
+        },
+        {
+          "atMs": 9500,
+          "description": "Creator massages oil onto a dry face.",
+          "onScreenText": "",
+          "productsVisible": []
+        },
+        {
+          "atMs": 14500,
+          "description": "Creator rinses with a milky cleanser; cheeks look pink.",
+          "onScreenText": "",
+          "productsVisible": []
+        }
+      ],
+      "comments": [
+        {
+          "author": "anon_ivy",
+          "text": "mineral spf is impossible to wash off for me too",
+          "likeCount": 156
+        },
+        {
+          "author": "anon_moss",
+          "text": "have you tried a cleansing balm?",
+          "likeCount": 41
+        }
+      ],
+      "signals": [
+        {
+          "need": "dry-sunscreen",
+          "type": "workaround",
+          "needStatement": "a sunscreen that doesn't dry out skin",
+          "products": [
+            {
+              "name": "barrier cream",
+              "source": "speech"
+            },
+            {
+              "name": "mineral sunscreen",
+              "source": "speech"
+            }
+          ],
+          "stance": "sincere",
+          "sponsored": "none",
+          "confidence": 0.8,
+          "evidence": [
+            {
+              "source": "transcript",
+              "excerpt": "I put a layer of barrier cream underneath first, otherwise it flakes by midday.",
+              "index": 1
+            },
+            {
+              "source": "transcript",
+              "excerpt": "Mineral sunscreen is the only thing my skin tolerates but it's so drying.",
+              "index": 0
+            }
+          ]
+        },
+        {
+          "need": "mineral-cleanser",
+          "type": "workaround",
+          "needStatement": "a cleanser that removes mineral sunscreen without stripping skin",
+          "products": [
+            {
+              "name": "cleansing oil",
+              "source": "speech"
+            },
+            {
+              "name": "milk cleanser",
+              "source": "speech"
+            }
+          ],
+          "stance": "sincere",
+          "sponsored": "none",
+          "confidence": 0.8,
+          "evidence": [
+            {
+              "source": "transcript",
+              "excerpt": "Getting it off at night is its own problem. I use an oil first and then a gentle milk cleanser.",
+              "index": 2
+            },
+            {
+              "source": "frame",
+              "excerpt": "Creator massages oil onto a dry face.",
+              "index": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "externalId": "fx-v04",
+      "creator": "fx_mattefinishmo",
+      "postedAt": "2026-07-28T12:30:00Z",
+      "views": 61000,
+      "likes": 4300,
+      "commentsCount": 290,
+      "caption": "pilling test: 5 sunscreens under foundation #makeup #sunscreen",
+      "durationMs": 21000,
+      "transcript": [
+        {
+          "startMs": 0,
+          "endMs": 5000,
+          "text": "I tested five sunscreens under the same foundation and three of them pilled."
+        },
+        {
+          "startMs": 5000,
+          "endMs": 10500,
+          "text": "You can see it here, it rolls up into little balls the second the sponge touches it."
+        },
+        {
+          "startMs": 10500,
+          "endMs": 16000,
+          "text": "And the one that didn't pill is an expensive vitamin C serum plus SPF combo that I can't keep buying."
+        },
+        {
+          "startMs": 16000,
+          "endMs": 21000,
+          "text": "If anyone knows a cheaper version of that serum, tell me."
+        }
+      ],
+      "keyframes": [
+        {
+          "atMs": 500,
+          "description": "Five sunscreen bottles lined up on a vanity.",
+          "onScreenText": "5 SPFs vs foundation",
+          "productsVisible": [
+            {
+              "name": "sunscreen bottles",
+              "confidence": 0.77
+            }
+          ]
+        },
+        {
+          "atMs": 5500,
+          "description": "Macro shot of foundation pilling into small flakes on a cheek.",
+          "onScreenText": "",
+          "productsVisible": []
+        },
+        {
+          "atMs": 11000,
+          "description": "Creator holds a glass dropper serum bottle next to an SPF bottle.",
+          "onScreenText": "",
+          "productsVisible": [
+            {
+              "name": "vitamin C serum",
+              "confidence": 0.73
+            }
+          ]
+        },
+        {
+          "atMs": 16500,
+          "description": "Creator shrugs at camera; text reads 'dupe?'.",
+          "onScreenText": "dupe?",
+          "productsVisible": []
+        }
+      ],
+      "comments": [
+        {
+          "author": "anon_reed",
+          "text": "the pilling is the worst part of my morning",
+          "likeCount": 420
+        },
+        {
+          "author": "anon_gale",
+          "text": "need the dupe too",
+          "likeCount": 95
+        }
+      ],
+      "signals": [
+        {
+          "need": "pilling-spf",
+          "type": "complaint",
+          "needStatement": "a sunscreen that doesn't pill under makeup",
+          "products": [
+            {
+              "name": "sunscreen",
+              "source": "visual"
+            }
+          ],
+          "stance": "sincere",
+          "sponsored": "none",
+          "confidence": 0.8,
+          "evidence": [
+            {
+              "source": "transcript",
+              "excerpt": "I tested five sunscreens under the same foundation and three of them pilled.",
+              "index": 0
+            },
+            {
+              "source": "frame",
+              "excerpt": "Macro shot of foundation pilling into small flakes on a cheek.",
+              "index": 1
+            }
+          ]
+        },
+        {
+          "need": "pilling-spf",
+          "type": "complaint",
+          "needStatement": "a sunscreen that stays smooth under foundation",
+          "products": [
+            {
+              "name": "foundation",
+              "source": "speech"
+            }
+          ],
+          "stance": "sincere",
+          "sponsored": "none",
+          "confidence": 0.8,
+          "evidence": [
+            {
+              "source": "transcript",
+              "excerpt": "You can see it here, it rolls up into little balls the second the sponge touches it.",
+              "index": 1
+            }
+          ]
+        },
+        {
+          "need": "vitc-dupe",
+          "type": "dupe_hunt",
+          "needStatement": "an affordable alternative to an expensive vitamin C serum",
+          "products": [
+            {
+              "name": "vitamin C serum",
+              "source": "speech"
+            }
+          ],
+          "stance": "sincere",
+          "sponsored": "none",
+          "confidence": 0.8,
+          "evidence": [
+            {
+              "source": "transcript",
+              "excerpt": "If anyone knows a cheaper version of that serum, tell me.",
+              "index": 3
+            },
+            {
+              "source": "comment",
+              "excerpt": "need the dupe too",
+              "index": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "externalId": "fx-v05",
+      "creator": "fx_glowonashoestring",
+      "postedAt": "2026-05-14T08:20:00Z",
+      "views": 15800,
+      "likes": 1300,
+      "commentsCount": 88,
+      "caption": "budget morning routine for dry skin #drugstoreskincare",
+      "durationMs": 9000,
+      "transcript": [
+        {
+          "startMs": 0,
+          "endMs": 4000,
+          "text": "Budget routine, but the sunscreen step is where it falls apart."
+        },
+        {
+          "startMs": 4000,
+          "endMs": 9000,
+          "text": "Every affordable SPF I've tried leaves my dry patches worse by the afternoon."
+        }
+      ],
+      "keyframes": [
+        {
+          "atMs": 500,
+          "description": "Three budget skincare products on a bathroom sink.",
+          "onScreenText": "",
+          "productsVisible": [
+            {
+              "name": "moisturiser",
+              "confidence": 0.6
+            },
+            {
+              "name": "sunscreen",
+              "confidence": 0.6
+            }
+          ]
+        },
+        {
+          "atMs": 5000,
+          "description": "Close-up of flaky dry patches around the nose.",
+          "onScreenText": "",
+          "productsVisible": []
+        }
+      ],
+      "comments": [
+        {
+          "author": "anon_wren",
+          "text": "same with every drugstore one I've tried",
+          "likeCount": 61
+        }
+      ],
+      "signals": [
+        {
+          "need": "dry-sunscreen",
+          "type": "complaint",
+          "needStatement": "a sunscreen that doesn't make dry patches worse",
+          "products": [
+            {
+              "name": "sunscreen",
+              "source": "speech"
+            }
+          ],
+          "stance": "sincere",
+          "sponsored": "none",
+          "confidence": 0.8,
+          "evidence": [
+            {
+              "source": "transcript",
+              "excerpt": "Every affordable SPF I've tried leaves my dry patches worse by the afternoon.",
+              "index": 1
+            },
+            {
+              "source": "frame",
+              "excerpt": "Close-up of flaky dry patches around the nose.",
+              "index": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "externalId": "fx-v06",
+      "creator": "fx_sensitiveskinsam",
+      "postedAt": "2026-04-03T19:00:00Z",
+      "views": 7200,
+      "likes": 610,
+      "commentsCount": 55,
+      "caption": "things my sensitive skin can't handle #sensitiveskin #retinol",
+      "durationMs": 19000,
+      "transcript": [
+        {
+          "startMs": 0,
+          "endMs": 4500,
+          "text": "Retinol. I want to use it, every retinol I've tried has fragrance or burns."
+        },
+        {
+          "startMs": 4500,
+          "endMs": 9500,
+          "text": "I wish someone made a properly gentle, fragrance-free one for reactive skin."
+        },
+        {
+          "startMs": 9500,
+          "endMs": 14500,
+          "text": "Also my sunscreen pills when I put anything on top of it."
+        },
+        {
+          "startMs": 14500,
+          "endMs": 19000,
+          "text": "And mineral sunscreen needs two cleanses to come off, which stings."
+        }
+      ],
+      "keyframes": [
+        {
+          "atMs": 500,
+          "description": "Creator holds up a retinol box, reads the ingredient list.",
+          "onScreenText": "",
+          "productsVisible": [
+            {
+              "name": "retinol serum",
+              "confidence": 0.7
+            }
+          ]
+        },
+        {
+          "atMs": 5000,
+          "description": "Text overlay: 'fragrance-free please'.",
+          "onScreenText": "fragrance-free please",
+          "productsVisible": []
+        },
+        {
+          "atMs": 10000,
+          "description": "Creator rubs a cheek; tiny white flakes visible.",
+          "onScreenText": "",
+          "productsVisible": []
+        },
+        {
+          "atMs": 15000,
+          "description": "Creator holds a cleanser and an oil.",
+          "onScreenText": "",
+          "productsVisible": []
+        }
+      ],
+      "comments": [
+        {
+          "author": "anon_brook",
+          "text": "gentle retinol that doesn't sting, yes please",
+          "likeCount": 88
+        }
+      ],
+      "signals": [
+        {
+          "need": "pilling-spf",
+          "type": "complaint",
+          "needStatement": "a sunscreen that doesn't pill under other products",
+          "products": [
+            {
+              "name": "sunscreen",
+              "source": "speech"
+            }
+          ],
+          "stance": "sincere",
+          "sponsored": "none",
+          "confidence": 0.8,
+          "evidence": [
+            {
+              "source": "transcript",
+              "excerpt": "Also my sunscreen pills when I put anything on top of it.",
+              "index": 2
+            },
+            {
+              "source": "frame",
+              "excerpt": "Creator rubs a cheek; tiny white flakes visible.",
+              "index": 2
+            }
+          ]
+        },
+        {
+          "need": "gentle-retinol",
+          "type": "wish",
+          "needStatement": "a fragrance-free retinol gentle enough for sensitive skin",
+          "products": [
+            {
+              "name": "retinol",
+              "source": "speech"
+            }
+          ],
+          "stance": "sincere",
+          "sponsored": "none",
+          "confidence": 0.8,
+          "evidence": [
+            {
+              "source": "transcript",
+              "excerpt": "I wish someone made a properly gentle, fragrance-free one for reactive skin.",
+              "index": 1
+            },
+            {
+              "source": "frame",
+              "excerpt": "Text overlay: 'fragrance-free please'.",
+              "index": 1
+            }
+          ]
+        },
+        {
+          "need": "mineral-cleanser",
+          "type": "complaint",
+          "needStatement": "a cleanser that removes mineral sunscreen without stinging",
+          "products": [
+            {
+              "name": "mineral sunscreen",
+              "source": "speech"
+            }
+          ],
+          "stance": "sincere",
+          "sponsored": "none",
+          "confidence": 0.8,
+          "evidence": [
+            {
+              "source": "transcript",
+              "excerpt": "And mineral sunscreen needs two cleanses to come off, which stings.",
+              "index": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "externalId": "fx-v07",
+      "creator": "fx_dewdiaries",
+      "postedAt": "2026-07-02T07:50:00Z",
+      "views": 22100,
+      "likes": 2400,
+      "commentsCount": 140,
+      "caption": "updated SPF mixing ratio after you asked #sunscreen",
+      "durationMs": 10000,
+      "transcript": [
+        {
+          "startMs": 0,
+          "endMs": 5000,
+          "text": "A lot of you asked for the exact ratio, so it's two pumps of sunscreen and one drop of face oil now."
+        },
+        {
+          "startMs": 5000,
+          "endMs": 10000,
+          "text": "Moisturiser was pilling a bit so I switched to oil and it still keeps me from drying out."
+        }
+      ],
+      "keyframes": [
+        {
+          "atMs": 500,
+          "description": "A sunscreen bottle and a face oil dropper on a marble tray.",
+          "onScreenText": "ratio: 2 pumps + 1 drop",
+          "productsVisible": [
+            {
+              "name": "sunscreen bottle",
+              "confidence": 0.8
+            },
+            {
+              "name": "face oil",
+              "confidence": 0.75
+            }
+          ]
+        },
+        {
+          "atMs": 6000,
+          "description": "Creator dispenses a single drop of oil into a palm.",
+          "onScreenText": "",
+          "productsVisible": []
+        }
+      ],
+      "comments": [
+        {
+          "author": "anon_lark",
+          "text": "trying this tomorrow",
+          "likeCount": 33
+        }
+      ],
+      "signals": [
+        {
+          "need": "dry-sunscreen",
+          "type": "workaround",
+          "needStatement": "a sunscreen that doesn't dry out skin",
+          "products": [
+            {
+              "name": "sunscreen",
+              "source": "speech"
+            },
+            {
+              "name": "face oil",
+              "source": "visual"
+            }
+          ],
+          "stance": "sincere",
+          "sponsored": "none",
+          "confidence": 0.8,
+          "evidence": [
+            {
+              "source": "transcript",
+              "excerpt": "A lot of you asked for the exact ratio, so it's two pumps of sunscreen and one drop of face oil now.",
+              "index": 0
+            },
+            {
+              "source": "frame",
+              "excerpt": "A sunscreen bottle and a face oil dropper on a marble tray.",
+              "index": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "externalId": "fx-v08",
+      "creator": "fx_thebudgetbeauty",
+      "postedAt": "2026-06-25T16:10:00Z",
+      "views": 33500,
+      "likes": 2900,
+      "commentsCount": 201,
+      "caption": "drugstore dupes I'm testing this month #dupes #budgetbeauty",
+      "durationMs": 14000,
+      "transcript": [
+        {
+          "startMs": 0,
+          "endMs": 4500,
+          "text": "This month I'm hunting for a dupe of that forty-pound vitamin C serum."
+        },
+        {
+          "startMs": 4500,
+          "endMs": 9000,
+          "text": "Also, my sunscreen is pilling under everything again, which, great."
+        },
+        {
+          "startMs": 9000,
+          "endMs": 14000,
+          "text": "Ideally I want an SPF that sits flat under makeup, not one I have to pat in for five minutes."
+        }
+      ],
+      "keyframes": [
+        {
+          "atMs": 500,
+          "description": "Table of drugstore serums with price stickers.",
+          "onScreenText": "dupe hunt",
+          "productsVisible": [
+            {
+              "name": "vitamin C serum",
+              "confidence": 0.7
+            }
+          ]
+        },
+        {
+          "atMs": 5000,
+          "description": "Creator rolls small flakes off her jawline.",
+          "onScreenText": "",
+          "productsVisible": []
+        },
+        {
+          "atMs": 9500,
+          "description": "Creator patting sunscreen in with fingertips.",
+          "onScreenText": "",
+          "productsVisible": []
+        }
+      ],
+      "comments": [
+        {
+          "author": "anon_opal",
+          "text": "the pilling is SO annoying",
+          "likeCount": 150
+        }
+      ],
+      "signals": [
+        {
+          "need": "pilling-spf",
+          "type": "complaint",
+          "needStatement": "a sunscreen that doesn't pill under makeup",
+          "products": [
+            {
+              "name": "sunscreen",
+              "source": "speech"
+            }
+          ],
+          "stance": "sincere",
+          "sponsored": "none",
+          "confidence": 0.8,
+          "evidence": [
+            {
+              "source": "transcript",
+              "excerpt": "Also, my sunscreen is pilling under everything again, which, great.",
+              "index": 1
+            },
+            {
+              "source": "frame",
+              "excerpt": "Creator rolls small flakes off her jawline.",
+              "index": 1
+            }
+          ]
+        },
+        {
+          "need": "pilling-spf",
+          "type": "wish",
+          "needStatement": "an SPF that sits flat under makeup without patting",
+          "products": [
+            {
+              "name": "sunscreen",
+              "source": "speech"
+            }
+          ],
+          "stance": "sincere",
+          "sponsored": "none",
+          "confidence": 0.8,
+          "evidence": [
+            {
+              "source": "transcript",
+              "excerpt": "Ideally I want an SPF that sits flat under makeup, not one I have to pat in for five minutes.",
+              "index": 2
+            }
+          ]
+        },
+        {
+          "need": "vitc-dupe",
+          "type": "dupe_hunt",
+          "needStatement": "an affordable alternative to an expensive vitamin C serum",
+          "products": [
+            {
+              "name": "vitamin C serum",
+              "source": "speech"
+            }
+          ],
+          "stance": "sincere",
+          "sponsored": "none",
+          "confidence": 0.8,
+          "evidence": [
+            {
+              "source": "transcript",
+              "excerpt": "This month I'm hunting for a dupe of that forty-pound vitamin C serum.",
+              "index": 0
+            },
+            {
+              "source": "frame",
+              "excerpt": "Table of drugstore serums with price stickers.",
+              "index": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "externalId": "fx-v09",
+      "creator": "fx_oilyandhonest",
+      "postedAt": "2026-06-18T21:30:00Z",
+      "views": 11900,
+      "likes": 760,
+      "commentsCount": 63,
+      "caption": "even oily skin gets dry under sunscreen?? #oilyskin",
+      "durationMs": 13500,
+      "transcript": [
+        {
+          "startMs": 0,
+          "endMs": 4000,
+          "text": "Oily skin, but somehow my sunscreen makes the sides of my face tight and dry."
+        },
+        {
+          "startMs": 4000,
+          "endMs": 9000,
+          "text": "So I put hyaluronic serum on first and let it sink in, then the SPF."
+        },
+        {
+          "startMs": 9000,
+          "endMs": 13500,
+          "text": "And taking off water-resistant mineral SPF at night leaves me stripped and shiny at the same time."
+        }
+      ],
+      "keyframes": [
+        {
+          "atMs": 500,
+          "description": "Creator points to dry patches along the jaw.",
+          "onScreenText": "",
+          "productsVisible": []
+        },
+        {
+          "atMs": 4500,
+          "description": "A hyaluronic serum dropper and a sunscreen tube on a counter.",
+          "onScreenText": "",
+          "productsVisible": [
+            {
+              "name": "hyaluronic serum",
+              "confidence": 0.7
+            },
+            {
+              "name": "sunscreen tube",
+              "confidence": 0.7
+            }
+          ]
+        },
+        {
+          "atMs": 9500,
+          "description": "Creator rinses face over a sink.",
+          "onScreenText": "",
+          "productsVisible": []
+        }
+      ],
+      "comments": [
+        {
+          "author": "anon_sage",
+          "text": "combo skin gang, same problem",
+          "likeCount": 44
+        }
+      ],
+      "signals": [
+        {
+          "need": "dry-sunscreen",
+          "type": "workaround",
+          "needStatement": "a sunscreen that doesn't dry out skin",
+          "products": [
+            {
+              "name": "hyaluronic serum",
+              "source": "speech"
+            },
+            {
+              "name": "sunscreen",
+              "source": "speech"
+            }
+          ],
+          "stance": "sincere",
+          "sponsored": "none",
+          "confidence": 0.8,
+          "evidence": [
+            {
+              "source": "transcript",
+              "excerpt": "So I put hyaluronic serum on first and let it sink in, then the SPF.",
+              "index": 1
+            },
+            {
+              "source": "frame",
+              "excerpt": "A hyaluronic serum dropper and a sunscreen tube on a counter.",
+              "index": 1
+            }
+          ]
+        },
+        {
+          "need": "dry-sunscreen",
+          "type": "complaint",
+          "needStatement": "a sunscreen that doesn't leave skin tight and dry",
+          "products": [
+            {
+              "name": "sunscreen",
+              "source": "speech"
+            }
+          ],
+          "stance": "sincere",
+          "sponsored": "none",
+          "confidence": 0.8,
+          "evidence": [
+            {
+              "source": "transcript",
+              "excerpt": "Oily skin, but somehow my sunscreen makes the sides of my face tight and dry.",
+              "index": 0
+            }
+          ]
+        },
+        {
+          "need": "mineral-cleanser",
+          "type": "complaint",
+          "needStatement": "a cleanser that removes water-resistant sunscreen without stripping",
+          "products": [
+            {
+              "name": "mineral sunscreen",
+              "source": "speech"
+            }
+          ],
+          "stance": "sincere",
+          "sponsored": "none",
+          "confidence": 0.8,
+          "evidence": [
+            {
+              "source": "transcript",
+              "excerpt": "And taking off water-resistant mineral SPF at night leaves me stripped and shiny at the same time.",
+              "index": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "externalId": "fx-v10",
+      "creator": "fx_thebudgetbeauty",
+      "postedAt": "2026-05-02T11:45:00Z",
+      "views": 27800,
+      "likes": 2100,
+      "commentsCount": 133,
+      "caption": "retinol for beginners on a budget #retinol #budgetbeauty",
+      "durationMs": 14000,
+      "transcript": [
+        {
+          "startMs": 0,
+          "endMs": 4500,
+          "text": "Still looking for a cheaper vitamin C serum that actually works, by the way."
+        },
+        {
+          "startMs": 4500,
+          "endMs": 9500,
+          "text": "For retinol, I want something gentle and fragrance-free that won't wreck my barrier."
+        },
+        {
+          "startMs": 9500,
+          "endMs": 14000,
+          "text": "And my SPF pilled under concealer again this morning."
+        }
+      ],
+      "keyframes": [
+        {
+          "atMs": 500,
+          "description": "Creator holds a vitamin C serum and frowns at the price tag.",
+          "onScreenText": "",
+          "productsVisible": [
+            {
+              "name": "vitamin C serum",
+              "confidence": 0.72
+            }
+          ]
+        },
+        {
+          "atMs": 5000,
+          "description": "Three retinol boxes on a desk.",
+          "onScreenText": "",
+          "productsVisible": [
+            {
+              "name": "retinol",
+              "confidence": 0.68
+            }
+          ]
+        },
+        {
+          "atMs": 10000,
+          "description": "Close-up of concealer flaking on the under-eye area.",
+          "onScreenText": "",
+          "productsVisible": []
+        }
+      ],
+      "comments": [
+        {
+          "author": "anon_dune",
+          "text": "the vitamin c dupe search continues",
+          "likeCount": 58
+        }
+      ],
+      "signals": [
+        {
+          "need": "pilling-spf",
+          "type": "complaint",
+          "needStatement": "a sunscreen that doesn't pill under concealer",
+          "products": [
+            {
+              "name": "sunscreen",
+              "source": "speech"
+            }
+          ],
+          "stance": "sincere",
+          "sponsored": "none",
+          "confidence": 0.8,
+          "evidence": [
+            {
+              "source": "transcript",
+              "excerpt": "And my SPF pilled under concealer again this morning.",
+              "index": 2
+            },
+            {
+              "source": "frame",
+              "excerpt": "Close-up of concealer flaking on the under-eye area.",
+              "index": 2
+            }
+          ]
+        },
+        {
+          "need": "gentle-retinol",
+          "type": "wish",
+          "needStatement": "a fragrance-free retinol that's gentle on the skin barrier",
+          "products": [
+            {
+              "name": "retinol",
+              "source": "speech"
+            }
+          ],
+          "stance": "sincere",
+          "sponsored": "none",
+          "confidence": 0.8,
+          "evidence": [
+            {
+              "source": "transcript",
+              "excerpt": "For retinol, I want something gentle and fragrance-free that won't wreck my barrier.",
+              "index": 1
+            }
+          ]
+        },
+        {
+          "need": "vitc-dupe",
+          "type": "dupe_hunt",
+          "needStatement": "an affordable alternative to an expensive vitamin C serum",
+          "products": [
+            {
+              "name": "vitamin C serum",
+              "source": "speech"
+            }
+          ],
+          "stance": "sincere",
+          "sponsored": "none",
+          "confidence": 0.8,
+          "evidence": [
+            {
+              "source": "transcript",
+              "excerpt": "Still looking for a cheaper vitamin C serum that actually works, by the way.",
+              "index": 0
+            },
+            {
+              "source": "comment",
+              "excerpt": "the vitamin c dupe search continues",
+              "index": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "externalId": "fx-v11",
+      "creator": "fx_spfscience",
+      "postedAt": "2026-08-27T10:00:00Z",
+      "views": 98000,
+      "likes": 7600,
+      "commentsCount": 505,
+      "caption": "Answering your SPF questions: dryness and removal #spf #skinscience",
+      "durationMs": 17000,
+      "transcript": [
+        {
+          "startMs": 0,
+          "endMs": 5500,
+          "text": "The number one question this week: how do I stop sunscreen drying me out?"
+        },
+        {
+          "startMs": 5500,
+          "endMs": 11000,
+          "text": "What most of you described is layering a moisturiser and waiting, which works but it's a workaround."
+        },
+        {
+          "startMs": 11000,
+          "endMs": 17000,
+          "text": "Second question: removing very water-resistant formulas. People are using balm then cleanser, every night."
+        }
+      ],
+      "keyframes": [
+        {
+          "atMs": 500,
+          "description": "Phone screenshot collage of follower questions about dry skin and SPF.",
+          "onScreenText": "your questions",
+          "productsVisible": []
+        },
+        {
+          "atMs": 6000,
+          "description": "Creator holds a moisturiser and a sunscreen in each hand.",
+          "onScreenText": "",
+          "productsVisible": [
+            {
+              "name": "moisturiser",
+              "confidence": 0.7
+            },
+            {
+              "name": "sunscreen",
+              "confidence": 0.7
+            }
+          ]
+        },
+        {
+          "atMs": 11500,
+          "description": "A cleansing balm jar next to a foaming cleanser.",
+          "onScreenText": "",
+          "productsVisible": [
+            {
+              "name": "cleansing balm",
+              "confidence": 0.7
+            },
+            {
+              "name": "foaming cleanser",
+              "confidence": 0.66
+            }
+          ]
+        }
+      ],
+      "comments": [
+        {
+          "author": "anon_cedar",
+          "text": "the balm then cleanser thing takes forever",
+          "likeCount": 210
+        },
+        {
+          "author": "anon_plum",
+          "text": "please review a hydrating spf",
+          "likeCount": 318
+        }
+      ],
+      "signals": [
+        {
+          "need": "dry-sunscreen",
+          "type": "workaround",
+          "needStatement": "a sunscreen that doesn't dry out skin",
+          "products": [
+            {
+              "name": "moisturiser",
+              "source": "speech"
+            },
+            {
+              "name": "sunscreen",
+              "source": "visual"
+            }
+          ],
+          "stance": "sincere",
+          "sponsored": "none",
+          "confidence": 0.8,
+          "evidence": [
+            {
+              "source": "transcript",
+              "excerpt": "What most of you described is layering a moisturiser and waiting, which works but it's a workaround.",
+              "index": 1
+            },
+            {
+              "source": "frame",
+              "excerpt": "Creator holds a moisturiser and a sunscreen in each hand.",
+              "index": 1
+            }
+          ]
+        },
+        {
+          "need": "mineral-cleanser",
+          "type": "workaround",
+          "needStatement": "a cleanser that removes water-resistant sunscreen in one step",
+          "products": [
+            {
+              "name": "cleansing balm",
+              "source": "speech"
+            },
+            {
+              "name": "cleanser",
+              "source": "speech"
+            }
+          ],
+          "stance": "sincere",
+          "sponsored": "none",
+          "confidence": 0.8,
+          "evidence": [
+            {
+              "source": "transcript",
+              "excerpt": "Second question: removing very water-resistant formulas. People are using balm then cleanser, every night.",
+              "index": 2
+            },
+            {
+              "source": "frame",
+              "excerpt": "A cleansing balm jar next to a foaming cleanser.",
+              "index": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "externalId": "fx-v12",
+      "creator": "fx_derm_notes_daily",
+      "postedAt": "2026-03-22T13:00:00Z",
+      "views": 240000,
+      "likes": 18100,
+      "commentsCount": 1120,
+      "caption": "Derm notes: retinoids, pilling and vitamin C prices #dermatology",
+      "durationMs": 16000,
+      "transcript": [
+        {
+          "startMs": 0,
+          "endMs": 5000,
+          "text": "Patients tell me retinol stings, and the fragranced ones make it worse."
+        },
+        {
+          "startMs": 5000,
+          "endMs": 10500,
+          "text": "Pilling is usually silicones and film formers clashing between layers, and people hate it."
+        },
+        {
+          "startMs": 10500,
+          "endMs": 16000,
+          "text": "And yes, effective vitamin C doesn't need to cost forty pounds; people want a cheaper option."
+        }
+      ],
+      "keyframes": [
+        {
+          "atMs": 500,
+          "description": "Clinic-style backdrop; creator in scrubs.",
+          "onScreenText": "derm notes",
+          "productsVisible": []
+        },
+        {
+          "atMs": 5500,
+          "description": "Diagram of two product layers balling up.",
+          "onScreenText": "why pilling happens",
+          "productsVisible": []
+        },
+        {
+          "atMs": 11000,
+          "description": "Price comparison chart of vitamin C serums.",
+          "onScreenText": "price ≠ efficacy",
+          "productsVisible": []
+        }
+      ],
+      "comments": [
+        {
+          "author": "anon_ash",
+          "text": "finally someone explains the pilling",
+          "likeCount": 640
+        }
+      ],
+      "signals": [
+        {
+          "need": "pilling-spf",
+          "type": "complaint",
+          "needStatement": "a sunscreen that doesn't pill when layered",
+          "products": [],
+          "stance": "sincere",
+          "sponsored": "none",
+          "confidence": 0.8,
+          "evidence": [
+            {
+              "source": "transcript",
+              "excerpt": "Pilling is usually silicones and film formers clashing between layers, and people hate it.",
+              "index": 1
+            },
+            {
+              "source": "frame",
+              "excerpt": "Diagram of two product layers balling up.",
+              "index": 1
+            }
+          ]
+        },
+        {
+          "need": "gentle-retinol",
+          "type": "complaint",
+          "needStatement": "a retinol that doesn't sting sensitive skin",
+          "products": [
+            {
+              "name": "retinol",
+              "source": "speech"
+            }
+          ],
+          "stance": "sincere",
+          "sponsored": "none",
+          "confidence": 0.8,
+          "evidence": [
+            {
+              "source": "transcript",
+              "excerpt": "Patients tell me retinol stings, and the fragranced ones make it worse.",
+              "index": 0
+            }
+          ]
+        },
+        {
+          "need": "vitc-dupe",
+          "type": "wish",
+          "needStatement": "an effective vitamin C serum at a lower price",
+          "products": [
+            {
+              "name": "vitamin C serum",
+              "source": "speech"
+            }
+          ],
+          "stance": "sincere",
+          "sponsored": "none",
+          "confidence": 0.8,
+          "evidence": [
+            {
+              "source": "transcript",
+              "excerpt": "And yes, effective vitamin C doesn't need to cost forty pounds; people want a cheaper option.",
+              "index": 2
+            },
+            {
+              "source": "frame",
+              "excerpt": "Price comparison chart of vitamin C serums.",
+              "index": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "externalId": "fx-v13",
+      "creator": "fx_nightshiftskin",
+      "postedAt": "2026-04-28T03:20:00Z",
+      "views": 4100,
+      "likes": 390,
+      "commentsCount": 27,
+      "caption": "night shift worker skincare, the SPF problem #nightshift",
+      "durationMs": 10000,
+      "transcript": [
+        {
+          "startMs": 0,
+          "endMs": 5000,
+          "text": "I sleep in the day, so my sunscreen sits on my skin through the afternoon and dries it out."
+        },
+        {
+          "startMs": 5000,
+          "endMs": 10000,
+          "text": "I'd love one SPF that's basically a moisturiser, so I can just put it on and sleep."
+        }
+      ],
+      "keyframes": [
+        {
+          "atMs": 500,
+          "description": "Dim bedroom with blackout curtains; creator holds a sunscreen.",
+          "onScreenText": "",
+          "productsVisible": []
+        },
+        {
+          "atMs": 5500,
+          "description": "Text overlay: 'one step please'.",
+          "onScreenText": "one step please",
+          "productsVisible": []
+        }
+      ],
+      "comments": [
+        {
+          "author": "anon_fog",
+          "text": "same as a nurse on nights",
+          "likeCount": 19
+        }
+      ],
+      "signals": [
+        {
+          "need": "dry-sunscreen",
+          "type": "wish",
+          "needStatement": "a sunscreen that works as a moisturiser",
+          "products": [
+            {
+              "name": "sunscreen",
+              "source": "speech"
+            }
+          ],
+          "stance": "sincere",
+          "sponsored": "none",
+          "confidence": 0.8,
+          "evidence": [
+            {
+              "source": "transcript",
+              "excerpt": "I'd love one SPF that's basically a moisturiser, so I can just put it on and sleep.",
+              "index": 1
+            },
+            {
+              "source": "frame",
+              "excerpt": "Text overlay: 'one step please'.",
+              "index": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "externalId": "fx-v14",
+      "creator": "fx_thebudgetbeauty",
+      "postedAt": "2026-02-11T15:30:00Z",
+      "views": 52000,
+      "likes": 4400,
+      "commentsCount": 260,
+      "caption": "#ad Trying a sponsored vitamin C serum dupe for a week (gifted) #dupes",
+      "durationMs": 20000,
+      "transcript": [
+        {
+          "startMs": 0,
+          "endMs": 5000,
+          "text": "This video is sponsored. I'm testing this serum as a dupe for the expensive vitamin C one."
+        },
+        {
+          "startMs": 5000,
+          "endMs": 10000,
+          "text": "If you've been looking for a cheaper vitamin C, this is the one they sent me."
+        },
+        {
+          "startMs": 10000,
+          "endMs": 15000,
+          "text": "My sunscreen still pills over it, which isn't the serum's fault."
+        },
+        {
+          "startMs": 15000,
+          "endMs": 20000,
+          "text": "And I'm still waiting for a fragrance-free retinol I can actually tolerate."
+        }
+      ],
+      "keyframes": [
+        {
+          "atMs": 500,
+          "description": "Creator holds a branded serum box toward camera.",
+          "onScreenText": "#ad",
+          "productsVisible": [
+            {
+              "name": "vitamin C serum",
+              "confidence": 0.85
+            }
+          ]
+        },
+        {
+          "atMs": 5500,
+          "description": "Before-and-after split of skin tone.",
+          "onScreenText": "",
+          "productsVisible": []
+        },
+        {
+          "atMs": 10500,
+          "description": "Close-up of flaking product on a cheek.",
+          "onScreenText": "",
+          "productsVisible": []
+        },
+        {
+          "atMs": 15500,
+          "description": "Creator shakes head at a retinol bottle.",
+          "onScreenText": "",
+          "productsVisible": [
+            {
+              "name": "retinol",
+              "confidence": 0.6
+            }
+          ]
+        }
+      ],
+      "comments": [
+        {
+          "author": "anon_mint",
+          "text": "is this a real dupe or just an ad",
+          "likeCount": 77
+        }
+      ],
+      "signals": [
+        {
+          "need": "vitc-dupe",
+          "type": "dupe_hunt",
+          "needStatement": "an affordable alternative to an expensive vitamin C serum",
+          "products": [
+            {
+              "name": "vitamin C serum",
+              "source": "visual"
+            }
+          ],
+          "stance": "sincere",
+          "sponsored": "disclosed",
+          "confidence": 0.8,
+          "evidence": [
+            {
+              "source": "transcript",
+              "excerpt": "This video is sponsored. I'm testing this serum as a dupe for the expensive vitamin C one.",
+              "index": 0
+            },
+            {
+              "source": "frame",
+              "excerpt": "Creator holds a branded serum box toward camera.",
+              "index": 0
+            }
+          ]
+        },
+        {
+          "need": "vitc-dupe",
+          "type": "dupe_hunt",
+          "needStatement": "a cheaper vitamin C serum that performs like a premium one",
+          "products": [
+            {
+              "name": "vitamin C serum",
+              "source": "speech"
+            }
+          ],
+          "stance": "sincere",
+          "sponsored": "disclosed",
+          "confidence": 0.8,
+          "evidence": [
+            {
+              "source": "transcript",
+              "excerpt": "If you've been looking for a cheaper vitamin C, this is the one they sent me.",
+              "index": 1
+            }
+          ]
+        },
+        {
+          "need": "pilling-spf",
+          "type": "complaint",
+          "needStatement": "a sunscreen that doesn't pill over serums",
+          "products": [
+            {
+              "name": "sunscreen",
+              "source": "speech"
+            }
+          ],
+          "stance": "sincere",
+          "sponsored": "disclosed",
+          "confidence": 0.8,
+          "evidence": [
+            {
+              "source": "transcript",
+              "excerpt": "My sunscreen still pills over it, which isn't the serum's fault.",
+              "index": 2
+            },
+            {
+              "source": "frame",
+              "excerpt": "Close-up of flaking product on a cheek.",
+              "index": 2
+            }
+          ]
+        },
+        {
+          "need": "gentle-retinol",
+          "type": "wish",
+          "needStatement": "a fragrance-free retinol for sensitive skin",
+          "products": [
+            {
+              "name": "retinol",
+              "source": "speech"
+            }
+          ],
+          "stance": "sincere",
+          "sponsored": "disclosed",
+          "confidence": 0.8,
+          "evidence": [
+            {
+              "source": "transcript",
+              "excerpt": "And I'm still waiting for a fragrance-free retinol I can actually tolerate.",
+              "index": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "externalId": "fx-v15",
+      "creator": "fx_glowonashoestring",
+      "postedAt": "2026-06-09T18:25:00Z",
+      "views": 19300,
+      "likes": 1500,
+      "commentsCount": 97,
+      "caption": "summer routine for dry skin #sunscreen #dryskin",
+      "durationMs": 14000,
+      "transcript": [
+        {
+          "startMs": 0,
+          "endMs": 4500,
+          "text": "Summer means more sunscreen, which means more dryness for me."
+        },
+        {
+          "startMs": 4500,
+          "endMs": 9500,
+          "text": "I've started using a hydrating mist over my SPF every couple of hours to stop it tightening."
+        },
+        {
+          "startMs": 9500,
+          "endMs": 14000,
+          "text": "And at night it takes two cleanses to get the mineral one off, my skin hates it."
+        }
+      ],
+      "keyframes": [
+        {
+          "atMs": 500,
+          "description": "Beach bag with a sunscreen and a face mist.",
+          "onScreenText": "",
+          "productsVisible": [
+            {
+              "name": "sunscreen",
+              "confidence": 0.7
+            },
+            {
+              "name": "face mist",
+              "confidence": 0.72
+            }
+          ]
+        },
+        {
+          "atMs": 5000,
+          "description": "Creator sprays a mist over her face.",
+          "onScreenText": "",
+          "productsVisible": []
+        },
+        {
+          "atMs": 10000,
+          "description": "Two cleansers side by side on a sink.",
+          "onScreenText": "",
+          "productsVisible": [
+            {
+              "name": "cleanser",
+              "confidence": 0.65
+            }
+          ]
+        }
+      ],
+      "comments": [
+        {
+          "author": "anon_tide",
+          "text": "the mist trick works for me too",
+          "likeCount": 52
+        }
+      ],
+      "signals": [
+        {
+          "need": "dry-sunscreen",
+          "type": "workaround",
+          "needStatement": "a sunscreen that doesn't dry out skin",
+          "products": [
+            {
+              "name": "face mist",
+              "source": "speech"
+            },
+            {
+              "name": "sunscreen",
+              "source": "speech"
+            }
+          ],
+          "stance": "sincere",
+          "sponsored": "none",
+          "confidence": 0.8,
+          "evidence": [
+            {
+              "source": "transcript",
+              "excerpt": "I've started using a hydrating mist over my SPF every couple of hours to stop it tightening.",
+              "index": 1
+            },
+            {
+              "source": "frame",
+              "excerpt": "Creator sprays a mist over her face.",
+              "index": 1
+            }
+          ]
+        },
+        {
+          "need": "mineral-cleanser",
+          "type": "complaint",
+          "needStatement": "a cleanser that removes mineral sunscreen in one go",
+          "products": [
+            {
+              "name": "mineral sunscreen",
+              "source": "speech"
+            }
+          ],
+          "stance": "sincere",
+          "sponsored": "none",
+          "confidence": 0.8,
+          "evidence": [
+            {
+              "source": "transcript",
+              "excerpt": "And at night it takes two cleanses to get the mineral one off, my skin hates it.",
+              "index": 2
+            },
+            {
+              "source": "frame",
+              "excerpt": "Two cleansers side by side on a sink.",
+              "index": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "externalId": "fx-v16",
+      "creator": "fx_thebudgetbeauty",
+      "postedAt": "2026-08-08T14:00:00Z",
+      "views": 41000,
+      "likes": 3800,
+      "commentsCount": 230,
+      "caption": "I just LOVE when my sunscreen turns into eraser shavings 🙃 #pilling",
+      "durationMs": 10000,
+      "transcript": [
+        {
+          "startMs": 0,
+          "endMs": 5000,
+          "text": "Oh I love it, nothing says glowing skin like my sunscreen turning into eraser shavings."
+        },
+        {
+          "startMs": 5000,
+          "endMs": 10000,
+          "text": "Anyway, this new serum is supposedly a dupe for the expensive vitamin C. Link's in my bio."
+        }
+      ],
+      "keyframes": [
+        {
+          "atMs": 500,
+          "description": "Creator smiles sarcastically while rolling flakes off her cheek.",
+          "onScreenText": "so glowy 🙃",
+          "productsVisible": []
+        },
+        {
+          "atMs": 5500,
+          "description": "Serum bottle held up with a shopping link sticker.",
+          "onScreenText": "link in bio",
+          "productsVisible": [
+            {
+              "name": "vitamin C serum",
+              "confidence": 0.7
+            }
+          ]
+        }
+      ],
+      "comments": [
+        {
+          "author": "anon_jade",
+          "text": "the sarcasm 😂",
+          "likeCount": 310
+        }
+      ],
+      "signals": [
+        {
+          "need": "pilling-spf",
+          "type": "complaint",
+          "needStatement": "a sunscreen that doesn't pill",
+          "products": [
+            {
+              "name": "sunscreen",
+              "source": "speech"
+            }
+          ],
+          "stance": "sarcastic",
+          "sponsored": "none",
+          "confidence": 0.8,
+          "evidence": [
+            {
+              "source": "transcript",
+              "excerpt": "Oh I love it, nothing says glowing skin like my sunscreen turning into eraser shavings.",
+              "index": 0
+            },
+            {
+              "source": "frame",
+              "excerpt": "Creator smiles sarcastically while rolling flakes off her cheek.",
+              "index": 0
+            }
+          ]
+        },
+        {
+          "need": "vitc-dupe",
+          "type": "dupe_hunt",
+          "needStatement": "an affordable alternative to an expensive vitamin C serum",
+          "products": [
+            {
+              "name": "vitamin C serum",
+              "source": "speech"
+            }
+          ],
+          "stance": "sincere",
+          "sponsored": "suspected",
+          "confidence": 0.8,
+          "evidence": [
+            {
+              "source": "transcript",
+              "excerpt": "Anyway, this new serum is supposedly a dupe for the expensive vitamin C. Link's in my bio.",
+              "index": 1
+            },
+            {
+              "source": "frame",
+              "excerpt": "Serum bottle held up with a shopping link sticker.",
+              "index": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "externalId": "fx-v17",
+      "creator": "fx_sensitiveskinsam",
+      "postedAt": "2026-03-30T20:40:00Z",
+      "views": 6800,
+      "likes": 540,
+      "commentsCount": 38,
+      "caption": "flare-up week, back to basics #eczema #sensitiveskin",
+      "durationMs": 9500,
+      "transcript": [
+        {
+          "startMs": 0,
+          "endMs": 4500,
+          "text": "Flare-up week, so even my sunscreen is making my skin feel dry and tight."
+        },
+        {
+          "startMs": 4500,
+          "endMs": 9500,
+          "text": "At night I use a balm to dissolve the mineral SPF and then a milk cleanser, otherwise it doesn't come off."
+        }
+      ],
+      "keyframes": [
+        {
+          "atMs": 500,
+          "description": "Creator with visibly red, dry cheeks.",
+          "onScreenText": "flare-up week",
+          "productsVisible": []
+        },
+        {
+          "atMs": 5000,
+          "description": "A balm jar and a milk cleanser bottle.",
+          "onScreenText": "",
+          "productsVisible": [
+            {
+              "name": "cleansing balm",
+              "confidence": 0.7
+            },
+            {
+              "name": "milk cleanser",
+              "confidence": 0.7
+            }
+          ]
+        }
+      ],
+      "comments": [
+        {
+          "author": "anon_sky",
+          "text": "sending love, flare weeks are rough",
+          "likeCount": 29
+        }
+      ],
+      "signals": [
+        {
+          "need": "dry-sunscreen",
+          "type": "complaint",
+          "needStatement": "a sunscreen that doesn't dry out reactive skin",
+          "products": [
+            {
+              "name": "sunscreen",
+              "source": "speech"
+            }
+          ],
+          "stance": "sincere",
+          "sponsored": "none",
+          "confidence": 0.8,
+          "evidence": [
+            {
+              "source": "transcript",
+              "excerpt": "Flare-up week, so even my sunscreen is making my skin feel dry and tight.",
+              "index": 0
+            },
+            {
+              "source": "frame",
+              "excerpt": "Creator with visibly red, dry cheeks.",
+              "index": 0
+            }
+          ]
+        },
+        {
+          "need": "mineral-cleanser",
+          "type": "workaround",
+          "needStatement": "a cleanser that removes mineral sunscreen without stripping skin",
+          "products": [
+            {
+              "name": "cleansing balm",
+              "source": "speech"
+            },
+            {
+              "name": "milk cleanser",
+              "source": "speech"
+            }
+          ],
+          "stance": "sincere",
+          "sponsored": "none",
+          "confidence": 0.8,
+          "evidence": [
+            {
+              "source": "transcript",
+              "excerpt": "At night I use a balm to dissolve the mineral SPF and then a milk cleanser, otherwise it doesn't come off.",
+              "index": 1
+            },
+            {
+              "source": "frame",
+              "excerpt": "A balm jar and a milk cleanser bottle.",
+              "index": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "externalId": "fx-v18",
+      "creator": "fx_glowonashoestring",
+      "postedAt": "2026-01-19T12:00:00Z",
+      "views": 30500,
+      "likes": 2500,
+      "commentsCount": 150,
+      "caption": "2026 skincare wishlist #wishlist",
+      "durationMs": 13500,
+      "transcript": [
+        {
+          "startMs": 0,
+          "endMs": 4500,
+          "text": "My 2026 wishlist. One: a vitamin C serum that works and doesn't cost a fortune."
+        },
+        {
+          "startMs": 4500,
+          "endMs": 9000,
+          "text": "Two: a retinol for sensitive skin with no fragrance at all."
+        },
+        {
+          "startMs": 9000,
+          "endMs": 13500,
+          "text": "Three: an SPF that I can put makeup over without it balling up."
+        }
+      ],
+      "keyframes": [
+        {
+          "atMs": 500,
+          "description": "Handwritten wishlist on a notepad.",
+          "onScreenText": "2026 wishlist",
+          "productsVisible": []
+        },
+        {
+          "atMs": 5000,
+          "description": "Creator crosses out a fragranced product on the list.",
+          "onScreenText": "",
+          "productsVisible": []
+        },
+        {
+          "atMs": 9500,
+          "description": "Creator holds foundation and sunscreen.",
+          "onScreenText": "",
+          "productsVisible": [
+            {
+              "name": "foundation",
+              "confidence": 0.6
+            },
+            {
+              "name": "sunscreen",
+              "confidence": 0.6
+            }
+          ]
+        }
+      ],
+      "comments": [
+        {
+          "author": "anon_pine",
+          "text": "number three please",
+          "likeCount": 70
+        }
+      ],
+      "signals": [
+        {
+          "need": "vitc-dupe",
+          "type": "wish",
+          "needStatement": "an effective vitamin C serum that doesn't cost a fortune",
+          "products": [
+            {
+              "name": "vitamin C serum",
+              "source": "speech"
+            }
+          ],
+          "stance": "sincere",
+          "sponsored": "none",
+          "confidence": 0.8,
+          "evidence": [
+            {
+              "source": "transcript",
+              "excerpt": "My 2026 wishlist. One: a vitamin C serum that works and doesn't cost a fortune.",
+              "index": 0
+            },
+            {
+              "source": "frame",
+              "excerpt": "Handwritten wishlist on a notepad.",
+              "index": 0
+            }
+          ]
+        },
+        {
+          "need": "gentle-retinol",
+          "type": "wish",
+          "needStatement": "a fragrance-free retinol for sensitive skin",
+          "products": [
+            {
+              "name": "retinol",
+              "source": "speech"
+            }
+          ],
+          "stance": "sincere",
+          "sponsored": "none",
+          "confidence": 0.8,
+          "evidence": [
+            {
+              "source": "transcript",
+              "excerpt": "Two: a retinol for sensitive skin with no fragrance at all.",
+              "index": 1
+            },
+            {
+              "source": "frame",
+              "excerpt": "Creator crosses out a fragranced product on the list.",
+              "index": 1
+            }
+          ]
+        },
+        {
+          "need": "pilling-spf",
+          "type": "wish",
+          "needStatement": "an SPF that doesn't ball up under makeup",
+          "products": [
+            {
+              "name": "sunscreen",
+              "source": "speech"
+            }
+          ],
+          "stance": "sincere",
+          "sponsored": "none",
+          "confidence": 0.8,
+          "evidence": [
+            {
+              "source": "transcript",
+              "excerpt": "Three: an SPF that I can put makeup over without it balling up.",
+              "index": 2
+            },
+            {
+              "source": "comment",
+              "excerpt": "number three please",
+              "index": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "externalId": "fx-v19",
+      "creator": "fx_derm_notes_daily",
+      "postedAt": "2026-08-12T13:00:00Z",
+      "views": 310000,
+      "likes": 24500,
+      "commentsCount": 1800,
+      "caption": "Derm notes: the SPF + moisturiser cocktail everyone is doing #dermatology #sunscreen",
+      "durationMs": 16000,
+      "transcript": [
+        {
+          "startMs": 0,
+          "endMs": 5000,
+          "text": "I keep seeing people mix moisturiser into sunscreen because their SPF dries them out."
+        },
+        {
+          "startMs": 5000,
+          "endMs": 11000,
+          "text": "Dilution can lower protection, so I'd rather see a hydrating SPF that doesn't need it."
+        },
+        {
+          "startMs": 11000,
+          "endMs": 16000,
+          "text": "Until then, if you layer, let the moisturiser absorb first and use a full amount of sunscreen."
+        }
+      ],
+      "keyframes": [
+        {
+          "atMs": 500,
+          "description": "Clinic backdrop; text 'the SPF cocktail'.",
+          "onScreenText": "the SPF cocktail",
+          "productsVisible": []
+        },
+        {
+          "atMs": 5500,
+          "description": "Diagram of a diluted sunscreen layer with fewer filter particles.",
+          "onScreenText": "",
+          "productsVisible": []
+        },
+        {
+          "atMs": 11500,
+          "description": "Creator demonstrates two-finger sunscreen amount next to a moisturiser.",
+          "onScreenText": "",
+          "productsVisible": [
+            {
+              "name": "sunscreen",
+              "confidence": 0.7
+            },
+            {
+              "name": "moisturiser",
+              "confidence": 0.65
+            }
+          ]
+        }
+      ],
+      "comments": [
+        {
+          "author": "anon_elm",
+          "text": "so what should dry skin people use then",
+          "likeCount": 880
+        }
+      ],
+      "signals": [
+        {
+          "need": "dry-sunscreen",
+          "type": "workaround",
+          "needStatement": "a sunscreen that doesn't dry out skin",
+          "products": [
+            {
+              "name": "moisturiser",
+              "source": "speech"
+            },
+            {
+              "name": "sunscreen",
+              "source": "speech"
+            }
+          ],
+          "stance": "sincere",
+          "sponsored": "none",
+          "confidence": 0.8,
+          "evidence": [
+            {
+              "source": "transcript",
+              "excerpt": "I keep seeing people mix moisturiser into sunscreen because their SPF dries them out.",
+              "index": 0
+            },
+            {
+              "source": "frame",
+              "excerpt": "Creator demonstrates two-finger sunscreen amount next to a moisturiser.",
+              "index": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "externalId": "fx-v20",
+      "creator": "fx_oilyandhonest",
+      "postedAt": "2025-11-06T19:10:00Z",
+      "views": 8300,
+      "likes": 600,
+      "commentsCount": 40,
+      "caption": "things I gave up on this year #skincare",
+      "durationMs": 13500,
+      "transcript": [
+        {
+          "startMs": 0,
+          "endMs": 4500,
+          "text": "Gave up on retinol, every one has fragrance and my skin reacts. I want a gentle one."
+        },
+        {
+          "startMs": 4500,
+          "endMs": 9000,
+          "text": "Gave up on the expensive vitamin C, still hunting for a dupe."
+        },
+        {
+          "startMs": 9000,
+          "endMs": 13500,
+          "text": "And gave up on mineral sunscreen because getting it off left my skin raw."
+        }
+      ],
+      "keyframes": [
+        {
+          "atMs": 500,
+          "description": "A box of discarded products labelled 'gave up'.",
+          "onScreenText": "gave up",
+          "productsVisible": []
+        },
+        {
+          "atMs": 5000,
+          "description": "Creator holds a pricey vitamin C serum.",
+          "onScreenText": "",
+          "productsVisible": [
+            {
+              "name": "vitamin C serum",
+              "confidence": 0.7
+            }
+          ]
+        },
+        {
+          "atMs": 9500,
+          "description": "Creator points to irritated skin after cleansing.",
+          "onScreenText": "",
+          "productsVisible": []
+        }
+      ],
+      "comments": [
+        {
+          "author": "anon_hazel",
+          "text": "the retinol fragrance thing is so frustrating",
+          "likeCount": 36
+        }
+      ],
+      "signals": [
+        {
+          "need": "gentle-retinol",
+          "type": "wish",
+          "needStatement": "a gentle fragrance-free retinol",
+          "products": [
+            {
+              "name": "retinol",
+              "source": "speech"
+            }
+          ],
+          "stance": "sincere",
+          "sponsored": "none",
+          "confidence": 0.8,
+          "evidence": [
+            {
+              "source": "transcript",
+              "excerpt": "Gave up on retinol, every one has fragrance and my skin reacts. I want a gentle one.",
+              "index": 0
+            }
+          ]
+        },
+        {
+          "need": "vitc-dupe",
+          "type": "dupe_hunt",
+          "needStatement": "an affordable alternative to an expensive vitamin C serum",
+          "products": [
+            {
+              "name": "vitamin C serum",
+              "source": "speech"
+            }
+          ],
+          "stance": "sincere",
+          "sponsored": "none",
+          "confidence": 0.8,
+          "evidence": [
+            {
+              "source": "transcript",
+              "excerpt": "Gave up on the expensive vitamin C, still hunting for a dupe.",
+              "index": 1
+            },
+            {
+              "source": "frame",
+              "excerpt": "Creator holds a pricey vitamin C serum.",
+              "index": 1
+            }
+          ]
+        },
+        {
+          "need": "mineral-cleanser",
+          "type": "complaint",
+          "needStatement": "a cleanser that removes mineral sunscreen without leaving skin raw",
+          "products": [
+            {
+              "name": "mineral sunscreen",
+              "source": "speech"
+            }
+          ],
+          "stance": "sincere",
+          "sponsored": "none",
+          "confidence": 0.8,
+          "evidence": [
+            {
+              "source": "transcript",
+              "excerpt": "And gave up on mineral sunscreen because getting it off left my skin raw.",
+              "index": 2
+            },
+            {
+              "source": "frame",
+              "excerpt": "Creator points to irritated skin after cleansing.",
+              "index": 2
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -10,6 +10,7 @@
   "scripts": {
     "typecheck": "tsc --noEmit -p ."
   },
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {
+    "@unmet/shared": "workspace:*"
+  }
 }

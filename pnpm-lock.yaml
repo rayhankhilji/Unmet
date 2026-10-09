@@ -38,9 +38,18 @@ importers:
       '@unmet/db':
         specifier: workspace:*
         version: link:../../packages/db
+      '@unmet/llm':
+        specifier: workspace:*
+        version: link:../../packages/llm
       '@unmet/shared':
         specifier: workspace:*
         version: link:../../packages/shared
+      '@unmet/stats':
+        specifier: workspace:*
+        version: link:../../packages/stats
+      drizzle-orm:
+        specifier: ^0.45.4
+        version: 0.45.4(@types/pg@8.23.1)(pg@8.23.1)
       pg:
         specifier: ^8.23.1
         version: 8.23.1
@@ -206,7 +215,11 @@ importers:
         specifier: ^4.6.5
         version: 4.6.5
 
-  packages/stats: {}
+  packages/stats:
+    dependencies:
+      '@unmet/shared':
+        specifier: workspace:*
+        version: link:../shared
 
   packages/storage: {}
 

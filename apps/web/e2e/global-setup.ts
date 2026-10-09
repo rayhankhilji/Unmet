@@ -5,4 +5,5 @@ export default function globalSetup(): void {
   const run = (script: string) =>
     execFileSync("pnpm", ["--dir", "../..", script, "--env", "e2e"], { stdio: "inherit" });
   run("db:reset");
+  run("db:seed");
 }

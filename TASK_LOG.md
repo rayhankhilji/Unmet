@@ -21,7 +21,7 @@ Legend: `[ ]` open · `[~]` in progress · `[x]` done · `[!]` blocked
 - [x] P0.T5 — `packages/shared` enums, errors, API schemas, `withErrorEnvelope` (tests: 63 unit tests across `packages/shared/src/**`; line coverage 98 %)
 - [x] P0.T6 — Test harness: Vitest projects, `withTestTx`, factories, MSW replay, Playwright + axe (tests: `packages/db/test/harness.int.test.ts` 6/6, `packages/llm/src/testing/replay.test.ts` 4/4, `packages/shared/src/testing/testing.test.ts` 8/8, `apps/web/e2e/smoke.spec.ts` 1/1; CI run lands with P0.T10)
 - [x] P0.T7 — Design tokens, fonts, dark mode, AppShell, base components, contrast script (tests: `e2e/visual.spec.ts` 7/7 — 4 baselines at 1440/390 × light/dark with axe, theme persistence, no horizontal scroll at 390; component tests `Button.test.tsx`, `States.test.tsx` 5/5; `pnpm design:contrast` 60/60)
-- [ ] P0.T8 — Fixture corpus and `pnpm db:seed` scenarios (tests: row-count test)
+- [x] P0.T8 — Fixture corpus and `pnpm db:seed` scenarios (tests: `apps/cli/test/seed.int.test.ts` 4/4 — row counts, run totals = event sums, claim evidence/number rules, repeatable + e2e eval fixtures; `packages/stats/src/snapshot.test.ts` 8/8 incl. T-F03-AC1/AC3/AC4 on the pure function)
 - [ ] P0.T9 — Health route, `policy.ts`, admin session, request IDs, security headers (tests: T-F13-AC1, headers spec)
 - [ ] P0.T10 — CI workflow, Vercel + Neon previews, Sentry + PostHog wiring (tests: green CI on PR)
 - [ ] P0.T11 — `/about` shell with stats block from seeded data (tests: T-F14-AC1, T-F14-AC2)
@@ -71,6 +71,10 @@ No blockers.
 | 2026-10-10 | Dark `--border-strong` raised from `#6E685E` to `#726C62` | `pnpm design:contrast` measured 2.94:1 on `--surface-raised` (inputs in dialogs/drawer); now 3.12:1 | DESIGN_SYSTEM §2 |
 | 2026-10-10 | The top bar lists only pages that exist; About, Evals and "Run live" are added in the tasks that build those pages (P0.T11, P5.T7, P4.T6) | No dead links in a public shell; typed routes enforce it | DESIGN_SYSTEM §8 (Navigation) unchanged — end state is the same |
 | 2026-10-10 | No theme library: a 1-line inline script sets `.dark` before paint, a toggle writes `localStorage` (try/catch) | Avoids a new dependency; the script is nonce-gated under the CSP added in P0.T9 | — |
+| 2026-10-10 | Pure `computeSnapshotStats` (formula `es@1`) pulled forward from P2.T6 into `packages/stats` | The seed's snapshots and claim numbers must come from the real formula, not hand-typed values. P2.T6 still owns the SQL inputs, persistence and the remaining T-F03 tests | ROADMAP P2.T6 (scope reduced) |
+| 2026-10-10 | Seed loads only the fictional `fixture-skin` brand; `lrp-like.json` is built in P3.T1 | Its catalogue must come from verified public product pages, not invented URLs | TESTING_GUIDE §4.2 |
+| 2026-10-10 | Fixture corpus is synthetic: handles prefixed `fx_`, URLs on example.com, `platform = synthetic`, `is_synthetic = true` | Nothing in fixtures can be mistaken for a real creator or post | — |
+| 2026-10-10 | Seeded failed and running runs are `private`; E2E reads them with an admin session | `PATCH` refuses to publish non-completed runs (409 NOT_COMPLETED); fixtures shouldn't contradict that | — |
 | 2026-10-09 | G-PRIV-04: both providers are used via API accounts. Anthropic's commercial terms and OpenAI's API data policy exclude API inputs/outputs from model training by default; no opt-in will be enabled. Rayhan to confirm neither org has opted into data sharing when keys are created. | Privacy of creator content sent to providers | EVAL_GUARDRAILS §8 |
 
 ## Session Log
