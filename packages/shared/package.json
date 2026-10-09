@@ -5,11 +5,13 @@
   "type": "module",
   "description": "Zod schemas, enums, error codes and API types shared by every app.",
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./node": "./src/node/load-env.ts"
   },
   "scripts": {
     "typecheck": "tsc --noEmit -p ."
   },
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {
+    "zod": "^4.6.5"
+  }
 }
