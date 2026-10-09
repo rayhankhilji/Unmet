@@ -422,7 +422,7 @@ Unique: (investigation_id, seq).
 | GET | /api/v1/health | public | — | `200 {ok: true, db: boolean}` | 200, 503 | F-13 |
 | GET | /api/v1/brands | public | — | `200 {items: BrandSummary[]}` | 200 | F-06 |
 | GET | /api/v1/investigations | public (published) / admin (all) | `?cursor&limit&visibility` | `200 {items: InvestigationSummary[], nextCursor}` | 200, 400 VALIDATION | F-08, F-13 |
-| POST | /api/v1/investigations | passcode or admin | `CreateInvestigationInput` | `202 {investigation: InvestigationSummary}` | 400 VALIDATION, 401 PASSCODE_INVALID, 402 BUDGET_EXHAUSTED, 404 BRAND_NOT_FOUND, 409 CONCURRENCY_LIMIT, 429 RATE_LIMITED | F-04, F-13 |
+| POST | /api/v1/investigations | passcode or admin | `CreateInvestigationInput` | `202 {investigation: InvestigationSummary}` | 400 VALIDATION, 401 PASSCODE_INVALID, 402 BUDGET_EXHAUSTED, 503 LIVE_RUNS_DISABLED, 404 BRAND_NOT_FOUND, 409 CONCURRENCY_LIMIT, 429 RATE_LIMITED | F-04, F-13 |
 | GET | /api/v1/investigations/:id | public if published / admin | — | `200 InvestigationDetail` | 404 NOT_FOUND | F-08 |
 | GET | /api/v1/investigations/:id/events | as above | `?afterSeq=0&detail=summary\|full` | `200 {items: RunEvent[], status, lastSeq}` | 404 | F-08, F-10 |
 | GET | /api/v1/investigations/:id/findings | as above | — | `200 {items: FindingDetail[]}` | 404 | F-05, F-06, F-07, F-08 |
@@ -506,7 +506,10 @@ Example `GET /api/v1/investigations/:id/findings` item (abridged):
 | NOT_CANCELLABLE / NOT_COMPLETED / OUTCOME_EXISTS / NOT_ELIGIBLE | 409 | State conflict | Specific message per code |
 | RATE_LIMITED | 429 | Per-IP limit | "You've hit today's limit of live runs." + `details.retryAfterSeconds` |
 | STATS_UNAVAILABLE | 503 | DB unreachable for stats | "Stats unavailable" |
+| LIVE_RUNS_DISABLED | 503 | `LIVE_RUNS_ENABLED=false` on this deployment (always on previews) | "Live runs are switched off here — explore the published investigations." |
 | INTERNAL | 500 | Unexpected | "Something broke on our side. It's been logged." |
+
+Ingest `video.ingest_error` values: `MEDIA_NOT_FOUND`, `TRANSCRIBE_FAILED`, `FRAMES_FAILED`, `DESCRIBE_INVALID`, `INTERNAL`.
 
 Run-level `error_code` values (stored on `investigation`, shown in the failed banner): `MODEL_UNAVAILABLE`, `TOOL_LOOP_LIMIT`, `TIMEOUT`, `WORKER_LOST`, `NO_SIGNALS_BEFORE_AS_OF`, `INTERNAL`.
 

@@ -18,7 +18,7 @@ Legend: `[ ]` open · `[~]` in progress · `[x]` done · `[!]` blocked
 - [x] P0.T2 — Scaffold pnpm + Turborepo monorepo, strict tsconfig, Biome, env examples (tests: `pnpm install && pnpm typecheck && pnpm lint` green, 11/11 typecheck tasks)
 - [x] P0.T3 — Docker pgvector, Drizzle config, migrations 0000 + 0001 for all tables (tests: `packages/db/test/schema.int.test.ts` 3/3 — 22 tables, 21 enums, pgvector, HNSW/GIN/queue indexes)
 - [x] P0.T4 — Env validation for web, worker, cli (tests: `packages/shared/src/env.test.ts`, `apps/web/src/server/env-schema.test.ts` incl. G-SEC-13, `apps/worker/src/env.test.ts`, `apps/cli/src/env.test.ts` — 15 tests)
-- [ ] P0.T5 — `packages/shared` enums, errors, API schemas, `withErrorEnvelope` (tests: schema unit tests)
+- [x] P0.T5 — `packages/shared` enums, errors, API schemas, `withErrorEnvelope` (tests: 63 unit tests across `packages/shared/src/**`; line coverage 98 %)
 - [ ] P0.T6 — Test harness: Vitest projects, `withTestTx`, factories, MSW replay, Playwright + axe (tests: sample tests in CI)
 - [ ] P0.T7 — Design tokens, fonts, dark mode, AppShell, base components, contrast script (tests: shell visual snapshot)
 - [ ] P0.T8 — Fixture corpus and `pnpm db:seed` scenarios (tests: row-count test)
@@ -64,6 +64,8 @@ No blockers.
 | 2026-10-10 | Integration tests clone a migrated template database per Vitest worker (`unmet_test_w<poolId>`) instead of a schema per worker | drizzle-kit emits `"public"."<enum>"`-qualified types, so per-schema isolation would not work; template cloning is as fast and fully isolated | TESTING_GUIDE §2 |
 | 2026-10-10 | Database rules from §4.4 are enforced as CHECK constraints too: evidence reference shape, claim-with-digit needs a snapshot, uncertainties/alternatives required unless rejected, demand-test ranges | Defence in depth behind the tool validators (G-AI-05, G-AI-06) | — |
 | 2026-10-10 | `docker-compose.yml` host port reads `UNMET_DB_PORT` (default 5433) | Another local project already holds 5433 on Rayhan's machine | TESTING_GUIDE §2 |
+| 2026-10-10 | New error code `LIVE_RUNS_DISABLED` (503) for run creation when `LIVE_RUNS_ENABLED=false` | ARCHITECTURE §8 orders a `LIVE_RUNS_ENABLED` check but the catalogue had no code for it | ARCHITECTURE §5.2, §5.4; EVAL_GUARDRAILS §5 |
+| 2026-10-10 | Enum tuples live once in `packages/shared/src/enums.ts`; Drizzle's `pgEnum`s are built from them | Database and API can't drift; the schema integration test also checks the tuples against Postgres | ARCHITECTURE §4.1 |
 | 2026-10-09 | G-PRIV-04: both providers are used via API accounts. Anthropic's commercial terms and OpenAI's API data policy exclude API inputs/outputs from model training by default; no opt-in will be enabled. Rayhan to confirm neither org has opted into data sharing when keys are created. | Privacy of creator content sent to providers | EVAL_GUARDRAILS §8 |
 
 ## Session Log
