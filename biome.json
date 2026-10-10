@@ -15,7 +15,8 @@
       "!**/test-results",
       "!**/playwright-report",
       "!packages/db/migrations/meta",
-      "!fixtures/llm"
+      "!fixtures/llm",
+      "!.claude/settings.local.json"
     ]
   },
   "formatter": {

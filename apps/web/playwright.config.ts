@@ -1,11 +1,14 @@
 import { defineConfig, devices } from "@playwright/test";
 import { loadLocalEnv } from "@unmet/shared/node";
 
-// Locally and in CI's build job, Playwright starts a production build against the seeded
-// unmet_e2e database. Against a Vercel preview, set PLAYWRIGHT_BASE_URL and nothing starts.
+// Locally and in CI, Playwright resets and seeds unmet_e2e, then starts a production build
+// against it. Against a Vercel preview, set PLAYWRIGHT_BASE_URL and nothing starts.
+// The reset lives in the webServer command, not globalSetup: Playwright starts the server
+// before globalSetup runs, and the health check needs the database to exist.
 const remote = process.env.PLAYWRIGHT_BASE_URL;
 if (!remote) loadLocalEnv({ env: "e2e" });
 const baseURL = remote ?? "http://localhost:3100";
+const E2E_DB_PREP = "pnpm --dir ../.. db:reset --env e2e && pnpm --dir ../.. db:seed --env e2e";
 
 export default defineConfig({
   testDir: "./e2e",
@@ -14,7 +17,6 @@ export default defineConfig({
   retries: 0,
   workers: process.env.CI ? 2 : undefined,
   reporter: process.env.CI ? [["github"], ["html", { open: "never" }]] : "list",
-  globalSetup: remote ? undefined : "./e2e/global-setup.ts",
   use: {
     baseURL,
     trace: "retain-on-failure",
@@ -29,7 +31,7 @@ export default defineConfig({
   webServer: remote
     ? undefined
     : {
-        command: "pnpm build && pnpm exec next start --port 3100",
+        command: `${E2E_DB_PREP} && pnpm build && pnpm exec next start --port 3100`,
         url: `${baseURL}/api/v1/health`,
         reuseExistingServer: !process.env.CI,
         timeout: 240_000,
