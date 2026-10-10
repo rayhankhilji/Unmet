@@ -28,6 +28,7 @@ export default defineConfig({
         },
       },
       {
+        resolve: { alias: { "@": fileURLToPath(new URL("apps/web/src", import.meta.url)) } },
         test: {
           name: "integration",
           environment: "node",

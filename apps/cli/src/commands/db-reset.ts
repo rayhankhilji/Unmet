@@ -1,4 +1,4 @@
-import { runMigrations } from "@unmet/db";
+import { runMigrations } from "@unmet/db/migrate";
 import pg from "pg";
 import type { CliBaseEnv } from "../env.ts";
 

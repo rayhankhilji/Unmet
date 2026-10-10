@@ -22,7 +22,7 @@ Legend: `[ ]` open · `[~]` in progress · `[x]` done · `[!]` blocked
 - [x] P0.T6 — Test harness: Vitest projects, `withTestTx`, factories, MSW replay, Playwright + axe (tests: `packages/db/test/harness.int.test.ts` 6/6, `packages/llm/src/testing/replay.test.ts` 4/4, `packages/shared/src/testing/testing.test.ts` 8/8, `apps/web/e2e/smoke.spec.ts` 1/1; CI run lands with P0.T10)
 - [x] P0.T7 — Design tokens, fonts, dark mode, AppShell, base components, contrast script (tests: `e2e/visual.spec.ts` 7/7 — 4 baselines at 1440/390 × light/dark with axe, theme persistence, no horizontal scroll at 390; component tests `Button.test.tsx`, `States.test.tsx` 5/5; `pnpm design:contrast` 60/60)
 - [x] P0.T8 — Fixture corpus and `pnpm db:seed` scenarios (tests: `apps/cli/test/seed.int.test.ts` 4/4 — row counts, run totals = event sums, claim evidence/number rules, repeatable + e2e eval fixtures; `packages/stats/src/snapshot.test.ts` 8/8 incl. T-F03-AC1/AC3/AC4 on the pure function)
-- [ ] P0.T9 — Health route, `policy.ts`, admin session, request IDs, security headers (tests: T-F13-AC1, headers spec)
+- [x] P0.T9 — Health route, `policy.ts`, admin session, request IDs, security headers (tests: T-F13-AC1 in `apps/web/test/api/investigations-create.int.test.ts`; `health`, `admin-session` (G-SEC-03/06/08), `policy` int tests — 21 total; `e2e/headers.spec.ts` 3/3; `scripts/check-policy.test.ts` 4/4; `pnpm check:policy` 0 violations)
 - [ ] P0.T10 — CI workflow, Vercel + Neon previews, Sentry + PostHog wiring (tests: green CI on PR)
 - [ ] P0.T11 — `/about` shell with stats block from seeded data (tests: T-F14-AC1, T-F14-AC2)
 - [ ] P0.T12 — **(human)** Corpus sourcing decision + `data/collection-plan.md`
@@ -75,6 +75,11 @@ No blockers.
 | 2026-10-10 | Seed loads only the fictional `fixture-skin` brand; `lrp-like.json` is built in P3.T1 | Its catalogue must come from verified public product pages, not invented URLs | TESTING_GUIDE §4.2 |
 | 2026-10-10 | Fixture corpus is synthetic: handles prefixed `fx_`, URLs on example.com, `platform = synthetic`, `is_synthetic = true` | Nothing in fixtures can be mistaken for a real creator or post | — |
 | 2026-10-10 | Seeded failed and running runs are `private`; E2E reads them with an admin session | `PATCH` refuses to publish non-completed runs (409 NOT_COMPLETED); fixtures shouldn't contradict that | — |
+| 2026-10-10 | **Needs Rayhan:** docs disagree on the first check in `POST /investigations`. INSTRUCTIONS §8 and ARCHITECTURE §6.2 say schema → passcode; EVAL_GUARDRAILS G-SEC-01 says the policy call comes "before any other work". Implemented schema → passcode (two docs, and it only reveals field names). Swap the two lines in `apps/web/src/app/api/v1/investigations/route.ts` if G-SEC-01 should win | Doc conflict, INSTRUCTIONS §12 | — |
+| 2026-10-10 | CSP uses a per-request nonce + `strict-dynamic`, set in `src/proxy.ts`; pages render dynamically as a result | Next.js hydration needs inline scripts; `default-src 'self'` alone breaks every page. Nonces keep XSS protection without `'unsafe-inline'` scripts | ARCHITECTURE §11 |
+| 2026-10-10 | Web logs are JSON lines written directly to stdout/stderr (`src/server/log.ts`), not pino | Avoids bundling pino into Next route handlers; same fields | ARCHITECTURE §14 unchanged in substance |
+| 2026-10-10 | `POST /investigations` stops after the passcode check with `LIVE_RUNS_DISABLED` until P4.T6 adds limits, budget and the insert | Route and its 401 path exist (T-F13-AC1) without opening an unguarded run path | — |
+| 2026-10-10 | Migrations are exported from `@unmet/db/migrate`, not the package index | Keeps migration files out of the web bundle | — |
 | 2026-10-09 | G-PRIV-04: both providers are used via API accounts. Anthropic's commercial terms and OpenAI's API data policy exclude API inputs/outputs from model training by default; no opt-in will be enabled. Rayhan to confirm neither org has opted into data sharing when keys are created. | Privacy of creator content sent to providers | EVAL_GUARDRAILS §8 |
 
 ## Session Log

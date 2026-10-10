@@ -788,10 +788,10 @@ Every model call goes through `packages/llm.callModel`, which reads `usage` (inc
 | Cancel / publish / record outcome | ✗ | ✗ | ✓ |
 | Frame images / media | ✗ | ✗ | ✓ only when `PUBLIC_DEMO_MODE=false` |
 
-- Policy checks live in one module: `apps/web/src/server/policy.ts` (`canRead(run, session)`, `requireAdmin`, `requirePasscode`).
+- Policy checks live in one module: `apps/web/src/server/policy.ts` (`canRead(run, session)`, `requireAdmin`, `requirePasscode`). `requireAdmin` answers non-admins with 404 (not 401/403) so admin routes don't reveal themselves; admin mutations and the login also require `Origin` = `APP_URL`.
 - Input validation: Zod at every route handler and tool boundary.
 - Secrets: env vars only (Vercel / Railway dashboards); validated at boot with `@t3-oss/env-nextjs` (web) and a Zod env schema (worker, cli).
-- Headers: CSP `default-src 'self'; img-src 'self' data: https://*.r2.cloudflarestorage.com; connect-src 'self' https://*.posthog.com https://*.sentry.io; frame-ancestors 'none'`; HSTS; `X-Content-Type-Options: nosniff`; `Referrer-Policy: strict-origin-when-cross-origin`.
+- Headers: CSP set per request by `apps/web/src/proxy.ts` with a fresh nonce: `default-src 'self'; script-src 'self' 'nonce-…' 'strict-dynamic'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.r2.cloudflarestorage.com; font-src 'self'; connect-src 'self' https://*.posthog.com https://*.sentry.io; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'` (+ `upgrade-insecure-requests` over HTTPS). A nonce is required because Next.js hydrates with inline scripts, which `default-src 'self'` alone would block; consequence: pages render dynamically (acceptable at this traffic). Static headers in `next.config.ts`: HSTS (2 years, preload), `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`, `X-Frame-Options: DENY`, `Permissions-Policy`.
 - CSRF: admin mutations require SameSite=Strict cookie and `Origin` header matching `APP_URL`.
 - Prompt injection: corpus text (transcripts, captions, comments) is untrusted and wrapped in `<untrusted_content>` tags; see EVAL_GUARDRAILS §3.
 - IP handling: `requester_ip_hash = sha256(IP_HASH_SALT + ip)`; raw IPs never stored.

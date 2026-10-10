@@ -27,7 +27,7 @@ export default defineConfig({
     ? undefined
     : {
         command: "pnpm build && pnpm exec next start --port 3100",
-        url: baseURL,
+        url: `${baseURL}/api/v1/health`,
         reuseExistingServer: !process.env.CI,
         timeout: 240_000,
         env: { ...process.env, APP_URL: baseURL } as Record<string, string>,
