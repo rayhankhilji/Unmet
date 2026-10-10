@@ -1,4 +1,9 @@
+import { loadLocalEnv } from "@unmet/shared/node";
 import type { NextConfig } from "next";
+
+// Next reads .env.local itself; this adds the .env.example fallback so a clean clone builds.
+// It is a no-op on Vercel (see loadLocalEnv).
+loadLocalEnv();
 
 // Headers that never vary per request. The CSP carries a nonce, so src/proxy.ts sets it.
 const securityHeaders = [

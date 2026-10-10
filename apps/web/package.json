@@ -12,6 +12,7 @@
     "design:contrast": "node scripts/contrast.ts"
   },
   "dependencies": {
+    "@sentry/nextjs": "^11.6.0",
     "@t3-oss/env-nextjs": "^0.13.11",
     "@tanstack/react-query": "^5.104.1",
     "@unmet/db": "workspace:*",
@@ -22,6 +23,7 @@
     "clsx": "^2.1.1",
     "lucide-react": "^1.54.0",
     "next": "^16.4.0",
+    "posthog-js": "^1.438.7",
     "radix-ui": "^1.7.0",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",

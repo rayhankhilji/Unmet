@@ -10,3 +10,4 @@ export * from "./schemas/eval.ts";
 export * from "./schemas/evidence.ts";
 export * from "./schemas/investigation.ts";
 export * from "./schemas/stats.ts";
+export * from "./sentry.ts";

@@ -4,7 +4,13 @@ import { join } from "node:path";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { loadLocalEnv, withDatabase } from "./load-env.ts";
 
-const KEYS = ["DATABASE_URL", "DATABASE_URL_UNPOOLED", "UNMET_TEST_ONLY"];
+const KEYS = [
+  "DATABASE_URL",
+  "DATABASE_URL_UNPOOLED",
+  "UNMET_TEST_ONLY",
+  "VERCEL",
+  "RAILWAY_ENVIRONMENT",
+];
 let saved: Record<string, string | undefined>;
 let root: string;
 
@@ -51,6 +57,13 @@ describe("loadLocalEnv", () => {
     expect(loadLocalEnv({ root, env: "e2e" })).toBe(join(root, ".env.test.example"));
     expect(process.env.DATABASE_URL).toBe("postgres://u:p@h:5433/unmet_e2e");
     expect(process.env.DATABASE_URL_UNPOOLED).toBe("postgres://u:p@h:5433/unmet_e2e");
+  });
+
+  it.each(["VERCEL", "RAILWAY_ENVIRONMENT"])("reads no files at all when %s is set", (platform) => {
+    process.env[platform] = "1";
+    writeFileSync(join(root, ".env.example"), "UNMET_TEST_ONLY=example\n");
+    expect(loadLocalEnv({ root })).toBeNull();
+    expect(process.env.UNMET_TEST_ONLY).toBeUndefined();
   });
 
   it("returns null when no env file exists", () => {

@@ -1,4 +1,6 @@
 import { createServer } from "node:http";
+import * as Sentry from "@sentry/node";
+import { SENTRY_DATA_COLLECTION } from "@unmet/shared";
 import { loadLocalEnv } from "@unmet/shared/node";
 import pino from "pino";
 import { loadWorkerEnv } from "./env.ts";
@@ -6,6 +8,12 @@ import { loadWorkerEnv } from "./env.ts";
 loadLocalEnv();
 const env = loadWorkerEnv();
 const log = pino({ base: { workerId: env.WORKER_ID } });
+
+// Errors only, tagged with the run; LLM payloads are never attached (ARCHITECTURE §14).
+if (env.SENTRY_DSN) {
+  Sentry.init({ dsn: env.SENTRY_DSN, tracesSampleRate: 0, dataCollection: SENTRY_DATA_COLLECTION });
+  Sentry.setTag("workerId", env.WORKER_ID);
+}
 
 const server = createServer((req, res) => {
   if (req.url === "/healthz") {

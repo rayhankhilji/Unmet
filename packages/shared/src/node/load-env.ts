@@ -15,6 +15,8 @@ export type LoadEnvOptions = {
  * committed `*.example` file is used so a clean clone runs without setup.
  */
 export function loadLocalEnv(options: LoadEnvOptions = {}): string | null {
+  // Hosted platforms inject real values; never let a committed example fill a gap there.
+  if (process.env.VERCEL || process.env.RAILWAY_ENVIRONMENT) return null;
   const root = options.root ?? findRepoRoot(process.cwd());
   const base = options.env === undefined ? ".env.local" : ".env.test";
   const fallback = options.env === undefined ? ".env.example" : ".env.test.example";
