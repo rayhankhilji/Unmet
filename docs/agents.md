@@ -29,6 +29,8 @@ All three configs list the same servers. Clients ask before enabling project ser
 | `cloudflare-bindings` | The private R2 bucket for media and frames | OAuth |
 | `upstash` | Rate-limit keys in Redis | `UPSTASH_EMAIL`, `UPSTASH_API_KEY` |
 
+Servers whose variables are unset fail to connect (`github` reports a badly formatted Authorization header); export the variables in the shell that starts the agent. The `npx` servers download on first launch and can exceed a client's 30 s connect timeout; run `npx -y <package>@<version> --help` once to warm the cache, then reconnect.
+
 Railway's MCP server now ships inside the Railway CLI (`railway mcp`); add it locally once the worker is deployed (P3.T9).
 
 ## Data handling
