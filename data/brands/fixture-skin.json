@@ -1,0 +1,151 @@
+{
+  "slug": "fixture-skin",
+  "name": "Fixture Skin",
+  "positioning": "A fictional dermatologist-led brand used only in tests and UI fixtures: fragrance-free formulas for sensitive and dry skin, built around ceramides, niacinamide and gentle filters.",
+  "catalogue": [
+    {
+      "name": "Barrier Cream",
+      "category": "moisturiser",
+      "format": "cream",
+      "keyIngredients": ["ceramides", "glycerin", "shea butter"],
+      "claims": ["restores the skin barrier", "fragrance-free"],
+      "skinTypes": ["dry", "sensitive"],
+      "url": "https://example.com/fixture-skin/products/barrier-cream"
+    },
+    {
+      "name": "Daily Gel Moisturiser",
+      "category": "moisturiser",
+      "format": "gel",
+      "keyIngredients": ["niacinamide", "glycerin"],
+      "claims": ["lightweight hydration", "non-comedogenic"],
+      "skinTypes": ["oily", "combination"],
+      "url": "https://example.com/fixture-skin/products/daily-gel-moisturiser"
+    },
+    {
+      "name": "Invisible Fluid SPF50",
+      "category": "sunscreen",
+      "format": "fluid",
+      "keyIngredients": ["tinosorb s", "uvinul a plus"],
+      "claims": ["broad spectrum SPF50", "no white cast"],
+      "skinTypes": ["all"],
+      "url": "https://example.com/fixture-skin/products/invisible-fluid-spf50"
+    },
+    {
+      "name": "Mineral Shield SPF30",
+      "category": "sunscreen",
+      "format": "cream",
+      "keyIngredients": ["zinc oxide"],
+      "claims": ["mineral filters only", "for reactive skin"],
+      "skinTypes": ["sensitive"],
+      "url": "https://example.com/fixture-skin/products/mineral-shield-spf30"
+    },
+    {
+      "name": "Sun Stick SPF50",
+      "category": "sunscreen",
+      "format": "stick",
+      "keyIngredients": ["tinosorb s", "octocrylene"],
+      "claims": ["reapply over makeup"],
+      "skinTypes": ["all"],
+      "url": "https://example.com/fixture-skin/products/sun-stick-spf50"
+    },
+    {
+      "name": "Gentle Milk Cleanser",
+      "category": "cleanser",
+      "format": "milk",
+      "keyIngredients": ["glycerin", "oat extract"],
+      "claims": ["does not strip", "fragrance-free"],
+      "skinTypes": ["dry", "sensitive"],
+      "url": "https://example.com/fixture-skin/products/gentle-milk-cleanser"
+    },
+    {
+      "name": "Foaming Gel Cleanser",
+      "category": "cleanser",
+      "format": "gel",
+      "keyIngredients": ["zinc pca"],
+      "claims": ["removes excess oil"],
+      "skinTypes": ["oily"],
+      "url": "https://example.com/fixture-skin/products/foaming-gel-cleanser"
+    },
+    {
+      "name": "Cleansing Balm",
+      "category": "cleanser",
+      "format": "balm",
+      "keyIngredients": ["caprylic triglyceride"],
+      "claims": ["melts makeup"],
+      "skinTypes": ["all"],
+      "url": "https://example.com/fixture-skin/products/cleansing-balm"
+    },
+    {
+      "name": "Niacinamide 10 Serum",
+      "category": "serum",
+      "format": "serum",
+      "keyIngredients": ["niacinamide", "zinc pca"],
+      "claims": ["refines pores", "evens tone"],
+      "skinTypes": ["oily", "combination"],
+      "url": "https://example.com/fixture-skin/products/niacinamide-10-serum"
+    },
+    {
+      "name": "Vitamin C 15 Serum",
+      "category": "serum",
+      "format": "serum",
+      "keyIngredients": ["ascorbic acid", "ferulic acid"],
+      "claims": ["brightens", "antioxidant protection"],
+      "skinTypes": ["normal", "dry"],
+      "url": "https://example.com/fixture-skin/products/vitamin-c-15-serum"
+    },
+    {
+      "name": "Retinal 0.05 Night Serum",
+      "category": "serum",
+      "format": "serum",
+      "keyIngredients": ["retinal"],
+      "claims": ["smooths texture"],
+      "skinTypes": ["normal", "oily"],
+      "url": "https://example.com/fixture-skin/products/retinal-0.05-night-serum"
+    },
+    {
+      "name": "Hyaluronic Hydrating Serum",
+      "category": "serum",
+      "format": "serum",
+      "keyIngredients": ["hyaluronic acid", "panthenol"],
+      "claims": ["plumps dehydrated skin"],
+      "skinTypes": ["all"],
+      "url": "https://example.com/fixture-skin/products/hyaluronic-hydrating-serum"
+    },
+    {
+      "name": "Soothing Repair Balm",
+      "category": "treatment",
+      "format": "balm",
+      "keyIngredients": ["panthenol", "madecassoside"],
+      "claims": ["calms irritation"],
+      "skinTypes": ["sensitive"],
+      "url": "https://example.com/fixture-skin/products/soothing-repair-balm"
+    },
+    {
+      "name": "Azelaic Acid 10 Cream",
+      "category": "treatment",
+      "format": "cream",
+      "keyIngredients": ["azelaic acid"],
+      "claims": ["reduces redness"],
+      "skinTypes": ["sensitive", "combination"],
+      "url": "https://example.com/fixture-skin/products/azelaic-acid-10-cream"
+    },
+    {
+      "name": "Eye Cream",
+      "category": "eye care",
+      "format": "cream",
+      "keyIngredients": ["caffeine", "peptides"],
+      "claims": ["reduces puffiness"],
+      "skinTypes": ["all"],
+      "url": "https://example.com/fixture-skin/products/eye-cream"
+    },
+    {
+      "name": "Lip Repair Balm",
+      "category": "lip care",
+      "format": "balm",
+      "keyIngredients": ["ceramides", "lanolin"],
+      "claims": ["repairs chapped lips"],
+      "skinTypes": ["all"],
+      "url": "https://example.com/fixture-skin/products/lip-repair-balm"
+    }
+  ]
+}

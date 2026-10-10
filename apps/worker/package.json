@@ -1,0 +1,21 @@
+{
+  "name": "worker",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/main.ts",
+    "start": "tsx src/main.ts",
+    "typecheck": "tsc --noEmit -p ."
+  },
+  "devDependencies": {
+    "tsx": "^4.23.15"
+  },
+  "dependencies": {
+    "@sentry/node": "^11.6.0",
+    "@unmet/db": "workspace:*",
+    "@unmet/shared": "workspace:*",
+    "pino": "^10.4.0",
+    "zod": "^4.6.5"
+  }
+}

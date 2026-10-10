@@ -1,0 +1,227 @@
+{
+  "id": "3af01449-950e-49dd-9c1f-fa640686cf18",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {},
+  "enums": {
+    "public.claim_kind": {
+      "name": "claim_kind",
+      "schema": "public",
+      "values": [
+        "support",
+        "counter",
+        "fit",
+        "uncertainty"
+      ]
+    },
+    "public.cost_band": {
+      "name": "cost_band",
+      "schema": "public",
+      "values": [
+        "under_500",
+        "500_2k",
+        "2k_10k"
+      ]
+    },
+    "public.eval_suite": {
+      "name": "eval_suite",
+      "schema": "public",
+      "values": [
+        "extraction",
+        "traps",
+        "backtest",
+        "comparison"
+      ]
+    },
+    "public.event_type": {
+      "name": "event_type",
+      "schema": "public",
+      "values": [
+        "status",
+        "model_call",
+        "tool_call",
+        "tool_result",
+        "finding_recorded",
+        "error",
+        "note"
+      ]
+    },
+    "public.evidence_source": {
+      "name": "evidence_source",
+      "schema": "public",
+      "values": [
+        "transcript",
+        "caption",
+        "frame",
+        "comment"
+      ]
+    },
+    "public.extract_status": {
+      "name": "extract_status",
+      "schema": "public",
+      "values": [
+        "pending",
+        "extracting",
+        "complete",
+        "failed",
+        "skipped"
+      ]
+    },
+    "public.fit_rating": {
+      "name": "fit_rating",
+      "schema": "public",
+      "values": [
+        "strong",
+        "moderate",
+        "poor"
+      ]
+    },
+    "public.follower_tier": {
+      "name": "follower_tier",
+      "schema": "public",
+      "values": [
+        "nano",
+        "micro",
+        "mid",
+        "macro"
+      ]
+    },
+    "public.ingest_status": {
+      "name": "ingest_status",
+      "schema": "public",
+      "values": [
+        "pending",
+        "transcribing",
+        "framing",
+        "describing",
+        "complete",
+        "failed",
+        "excluded"
+      ]
+    },
+    "public.outcome": {
+      "name": "outcome",
+      "schema": "public",
+      "values": [
+        "confirmed",
+        "refuted",
+        "inconclusive"
+      ]
+    },
+    "public.platform": {
+      "name": "platform",
+      "schema": "public",
+      "values": [
+        "tiktok",
+        "youtube_shorts",
+        "instagram_reels",
+        "synthetic"
+      ]
+    },
+    "public.run_kind": {
+      "name": "run_kind",
+      "schema": "public",
+      "values": [
+        "agent",
+        "baseline"
+      ]
+    },
+    "public.run_origin": {
+      "name": "run_origin",
+      "schema": "public",
+      "values": [
+        "owner",
+        "live_demo",
+        "eval"
+      ]
+    },
+    "public.run_status": {
+      "name": "run_status",
+      "schema": "public",
+      "values": [
+        "queued",
+        "running",
+        "completed",
+        "failed",
+        "cancelled",
+        "budget_exceeded"
+      ]
+    },
+    "public.signal_type": {
+      "name": "signal_type",
+      "schema": "public",
+      "values": [
+        "complaint",
+        "wish",
+        "workaround",
+        "dupe_hunt"
+      ]
+    },
+    "public.sponsored": {
+      "name": "sponsored",
+      "schema": "public",
+      "values": [
+        "disclosed",
+        "suspected",
+        "none"
+      ]
+    },
+    "public.stance": {
+      "name": "stance",
+      "schema": "public",
+      "values": [
+        "sincere",
+        "sarcastic",
+        "unclear"
+      ]
+    },
+    "public.system_under_test": {
+      "name": "system_under_test",
+      "schema": "public",
+      "values": [
+        "unmet",
+        "baseline"
+      ]
+    },
+    "public.test_type": {
+      "name": "test_type",
+      "schema": "public",
+      "values": [
+        "content_concept_test",
+        "creator_seeding",
+        "waitlist_landing",
+        "commenter_survey",
+        "concept_ad_test"
+      ]
+    },
+    "public.verdict": {
+      "name": "verdict",
+      "schema": "public",
+      "values": [
+        "strong",
+        "emerging",
+        "weak",
+        "rejected"
+      ]
+    },
+    "public.visibility": {
+      "name": "visibility",
+      "schema": "public",
+      "values": [
+        "private",
+        "published"
+      ]
+    }
+  },
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "mcpServers": {
+    "unmet": {
+      "command": "pnpm",
+      "args": ["-s", "--dir", "apps/mcp", "exec", "tsx", "src/main.ts"]
+    },
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp@0.0.83"]
+    },
+    "next-devtools": {
+      "command": "npx",
+      "args": ["-y", "next-devtools-mcp@0.4.0"]
+    },
+    "shadcn": {
+      "command": "npx",
+      "args": ["-y", "shadcn@4.21.4", "mcp"]
+    },
+    "context7": {
+      "url": "https://mcp.context7.com/mcp"
+    },
+    "github": {
+      "url": "https://api.githubcopilot.com/mcp/",
+      "headers": {
+        "Authorization": "Bearer ${env:GITHUB_PERSONAL_ACCESS_TOKEN}"
+      }
+    },
+    "neon": {
+      "url": "https://mcp.neon.tech/mcp"
+    },
+    "vercel": {
+      "url": "https://mcp.vercel.com"
+    },
+    "sentry": {
+      "url": "https://mcp.sentry.dev/mcp"
+    },
+    "posthog": {
+      "url": "https://mcp.posthog.com/mcp"
+    },
+    "cloudflare-bindings": {
+      "url": "https://bindings.mcp.cloudflare.com/mcp"
+    },
+    "upstash": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@upstash/mcp-server@0.3.0",
+        "--email",
+        "${env:UPSTASH_EMAIL}",
+        "--api-key",
+        "${env:UPSTASH_API_KEY}"
+      ]
+    }
+  }
+}

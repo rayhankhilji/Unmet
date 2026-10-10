@@ -1,0 +1,19 @@
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: unmet
+      POSTGRES_PASSWORD: unmet
+      POSTGRES_DB: unmet
+    ports:
+      - "${UNMET_DB_PORT:-5433}:5432"
+    volumes:
+      - unmet-db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U unmet -d unmet"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+
+volumes:
+  unmet-db:

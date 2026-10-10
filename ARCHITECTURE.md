@@ -49,35 +49,35 @@ flowchart LR
 | Layer | Choice | Version | Rationale |
 |---|---|---|---|
 | Runtime | Node.js | 24 LTS | Current LTS; native fetch, stable test runner support |
-| Language | TypeScript, `strict`, `noUncheckedIndexedAccess` | 5.x | One language across web, worker, CLI, evals |
+| Language | TypeScript, `strict`, `noUncheckedIndexedAccess` | 6.0 | One language across web, worker, CLI, evals |
 | Package manager / monorepo | pnpm workspaces + Turborepo | pnpm 10, turbo 2 | Fast installs, cached tasks |
 | Web framework | Next.js App Router + React | Next 16, React 19 | Server components for fast published pages; route handlers for API |
 | Styling | Tailwind CSS | 4 | Token-driven via CSS variables |
 | Components | shadcn/ui on Radix primitives | latest CLI | Accessible, owned source |
-| Motion | Motion (`motion/react`) | 12 | Layout animations for need cards and drawer |
+| Motion | Motion (`motion/react`) | 14 | Layout animations for need cards and drawer |
 | Icons | Lucide React | latest | Consistent stroke icons |
 | Client data | TanStack Query | 5 | Polling live run events, cache |
-| Charts | Recharts | 2 | Simple time-series and bar charts |
+| Charts | Recharts | 3 | Simple time-series and bar charts |
 | Toasts / sheets | Sonner, Vaul | latest | Accessible toasts; mobile bottom sheet with drag-to-dismiss |
 | Logging / IDs / processes | pino, `uuidv7`, `execa` | latest | Structured logs, time-ordered IDs, ffmpeg invocation |
 | Validation / contracts | Zod | 4 | Shared schemas for API, tools and LLM outputs |
 | Database | PostgreSQL on Neon with `pgvector` | PG 16 | Relational + vector + full-text in one place; branching for previews |
-| ORM / migrations | Drizzle ORM + drizzle-kit | 0.4x | Typed schema, SQL-first |
+| ORM / migrations | Drizzle ORM + drizzle-kit | 0.45 / 0.31 | Typed schema, SQL-first |
 | LLM (agent, extraction, vision, judge) | Anthropic TypeScript SDK (`@anthropic-ai/sdk`) | latest | Strong tool use; structured tool outputs |
-| Transcription + embeddings | OpenAI Node SDK (`openai`) | 5.x | `whisper-1` segment timestamps; `text-embedding-3-small` |
+| Transcription + embeddings | OpenAI Node SDK (`openai`) | 7.x | `whisper-1` segment timestamps; `text-embedding-3-small` |
 | Media processing | ffmpeg / ffprobe CLI via `execa` | ffmpeg 7 | Audio extraction, keyframes, scene detection |
 | Object storage | Cloudflare R2 via `@aws-sdk/client-s3` | v3 | Cheap private storage, S3 API |
 | Rate limiting | Upstash Redis + `@upstash/ratelimit` | latest | Serverless-friendly per-IP limits |
-| Errors | Sentry (`@sentry/nextjs`, `@sentry/node`) | 9.x | Web + worker errors |
+| Errors | Sentry (`@sentry/nextjs`, `@sentry/node`) | 11.x | Web + worker errors |
 | Product analytics | PostHog (`posthog-js`) | latest | Evidence-open funnel |
-| Unit/integration tests | Vitest | 3 | Fast, TS-native |
+| Unit/integration tests | Vitest | 5 | Fast, TS-native |
 | E2E / a11y | Playwright + `@axe-core/playwright` | latest | Hero flows + accessibility |
-| Network mocks | MSW | 2 | Mock Anthropic/OpenAI in tests |
+| Network mocks | MSW | 3 | Mock Anthropic/OpenAI in tests |
 | Lint/format | Biome | 2 | One fast tool for lint + format |
 | Hosting | Vercel (web), Railway (worker, Docker with ffmpeg) | — | Low ops; worker needs long-running process |
 | CI | GitHub Actions | — | Typecheck, lint, test, build, E2E on preview |
 
-Versions are majors; P0.T1 verifies current stable versions and model IDs and records them in TASK_LOG.
+Versions are majors, verified against the npm registry in P0.T1 (exact versions in TASK_LOG → Decisions, 2026-10-09). TypeScript stays on 6.0 rather than the 7.x native port until the compiler-API consumers in this stack support it.
 
 ## 3. Component Boundaries
 
@@ -94,6 +94,7 @@ Versions are majors; P0.T1 verifies current stable versions and model IDs and re
 | `packages/db` | Drizzle schema, migrations, repositories, queue helpers | All tables | Typed repositories | Postgres | Contain HTTP or LLM code |
 | `packages/storage` | R2 put/get/presign | Bucket layout | `putObject`, `presignGet` | AWS S3 SDK | Presign when `PUBLIC_DEMO_MODE=true` |
 | `packages/shared` | Zod schemas, enums, error codes, API types | Contracts | Schemas + inferred types | Zod | Import any runtime package |
+| `apps/mcp` | Read-only MCP server for coding agents (ADR-008) | Dev tooling | stdio MCP tools | `pg`, `@modelcontextprotocol/sdk` | Write to any table; connect to a non-local database by default; be deployed |
 | `prompts/` | Versioned prompt files | Prompt text | Loaded by `packages/llm` | — | Be inlined in code |
 
 ## 4. Data Model
@@ -422,7 +423,7 @@ Unique: (investigation_id, seq).
 | GET | /api/v1/health | public | — | `200 {ok: true, db: boolean}` | 200, 503 | F-13 |
 | GET | /api/v1/brands | public | — | `200 {items: BrandSummary[]}` | 200 | F-06 |
 | GET | /api/v1/investigations | public (published) / admin (all) | `?cursor&limit&visibility` | `200 {items: InvestigationSummary[], nextCursor}` | 200, 400 VALIDATION | F-08, F-13 |
-| POST | /api/v1/investigations | passcode or admin | `CreateInvestigationInput` | `202 {investigation: InvestigationSummary}` | 400 VALIDATION, 401 PASSCODE_INVALID, 402 BUDGET_EXHAUSTED, 404 BRAND_NOT_FOUND, 409 CONCURRENCY_LIMIT, 429 RATE_LIMITED | F-04, F-13 |
+| POST | /api/v1/investigations | passcode or admin | `CreateInvestigationInput` | `202 {investigation: InvestigationSummary}` | 400 VALIDATION, 401 PASSCODE_INVALID, 402 BUDGET_EXHAUSTED, 503 LIVE_RUNS_DISABLED, 404 BRAND_NOT_FOUND, 409 CONCURRENCY_LIMIT, 429 RATE_LIMITED | F-04, F-13 |
 | GET | /api/v1/investigations/:id | public if published / admin | — | `200 InvestigationDetail` | 404 NOT_FOUND | F-08 |
 | GET | /api/v1/investigations/:id/events | as above | `?afterSeq=0&detail=summary\|full` | `200 {items: RunEvent[], status, lastSeq}` | 404 | F-08, F-10 |
 | GET | /api/v1/investigations/:id/findings | as above | — | `200 {items: FindingDetail[]}` | 404 | F-05, F-06, F-07, F-08 |
@@ -506,7 +507,10 @@ Example `GET /api/v1/investigations/:id/findings` item (abridged):
 | NOT_CANCELLABLE / NOT_COMPLETED / OUTCOME_EXISTS / NOT_ELIGIBLE | 409 | State conflict | Specific message per code |
 | RATE_LIMITED | 429 | Per-IP limit | "You've hit today's limit of live runs." + `details.retryAfterSeconds` |
 | STATS_UNAVAILABLE | 503 | DB unreachable for stats | "Stats unavailable" |
+| LIVE_RUNS_DISABLED | 503 | `LIVE_RUNS_ENABLED=false` on this deployment (always on previews) | "Live runs are switched off here — explore the published investigations." |
 | INTERNAL | 500 | Unexpected | "Something broke on our side. It's been logged." |
+
+Ingest `video.ingest_error` values: `MEDIA_NOT_FOUND`, `TRANSCRIBE_FAILED`, `FRAMES_FAILED`, `DESCRIBE_INVALID`, `INTERNAL`.
 
 Run-level `error_code` values (stored on `investigation`, shown in the failed banner): `MODEL_UNAVAILABLE`, `TOOL_LOOP_LIMIT`, `TIMEOUT`, `WORKER_LOST`, `NO_SIGNALS_BEFORE_AS_OF`, `INTERNAL`.
 
@@ -655,7 +659,7 @@ sequenceDiagram
 | Anthropic | Agent, extraction, vision, judge | `@anthropic-ai/sdk` | API key | `ANTHROPIC_API_KEY`, `MODEL_AGENT`, `MODEL_EXTRACT`, `MODEL_VISION`, `MODEL_JUDGE`, `MODEL_FALLBACK` | none | Org rate limits | Retry 429/5xx/overloaded ×3 (exp backoff 1 s, 2 s, 4 s + jitter); then fallback model once; then `MODEL_UNAVAILABLE` | MSW handlers + recorded fixtures (`fixtures/llm/*.json`) |
 | OpenAI | Transcription, embeddings | `openai` | API key | `OPENAI_API_KEY`, `TRANSCRIBE_MODEL`, `EMBEDDING_MODEL` | none | Org rate limits; 25 MB audio cap | Retry ×3; ingest marks video failed with `TRANSCRIBE_FAILED` | MSW + fixture transcripts |
 | Cloudflare R2 | Private media + frames | `@aws-sdk/client-s3`, `@aws-sdk/s3-request-presigner` | Access key | `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET` | none | — | Ingest retries ×3; web returns `imageUrl: null` on presign failure | Local filesystem driver when `STORAGE_DRIVER=fs` (writes `.data/storage/`) |
-| Neon Postgres | Database | `@neondatabase/serverless` (web), `pg` (worker/cli) | Connection string | `DATABASE_URL`, `DATABASE_URL_UNPOOLED` | none | Plan limits | Web: 503 on health; worker retries connect with backoff | Docker `pgvector/pgvector:pg16` via `docker compose up db` |
+| Neon Postgres | Database | `pg` (web, worker, cli — see TASK_LOG Decisions 2026-10-10) | Connection string | `DATABASE_URL`, `DATABASE_URL_UNPOOLED` | none | Plan limits | Web: 503 on health; worker retries connect with backoff | Docker `pgvector/pgvector:pg16` via `docker compose up db` |
 | Upstash Redis | Rate limiting | `@upstash/ratelimit`, `@upstash/redis` | REST token | `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN` | none | — | Fail closed for run creation (429), fail open for reads | In-memory limiter when `RATE_LIMIT_DRIVER=memory` |
 | Sentry | Errors | `@sentry/nextjs`, `@sentry/node` | DSN | `SENTRY_DSN` | none | — | No-op if unset | Unset locally |
 | PostHog | Product analytics | `posthog-js` | Project key | `NEXT_PUBLIC_POSTHOG_KEY`, `NEXT_PUBLIC_POSTHOG_HOST` | none | — | No-op if unset | Unset locally |
@@ -785,10 +789,10 @@ Every model call goes through `packages/llm.callModel`, which reads `usage` (inc
 | Cancel / publish / record outcome | ✗ | ✗ | ✓ |
 | Frame images / media | ✗ | ✗ | ✓ only when `PUBLIC_DEMO_MODE=false` |
 
-- Policy checks live in one module: `apps/web/src/server/policy.ts` (`canRead(run, session)`, `requireAdmin`, `requirePasscode`).
+- Policy checks live in one module: `apps/web/src/server/policy.ts` (`canRead(run, session)`, `requireAdmin`, `requirePasscode`). `requireAdmin` answers non-admins with 404 (not 401/403) so admin routes don't reveal themselves; admin mutations and the login also require `Origin` = `APP_URL`.
 - Input validation: Zod at every route handler and tool boundary.
 - Secrets: env vars only (Vercel / Railway dashboards); validated at boot with `@t3-oss/env-nextjs` (web) and a Zod env schema (worker, cli).
-- Headers: CSP `default-src 'self'; img-src 'self' data: https://*.r2.cloudflarestorage.com; connect-src 'self' https://*.posthog.com https://*.sentry.io; frame-ancestors 'none'`; HSTS; `X-Content-Type-Options: nosniff`; `Referrer-Policy: strict-origin-when-cross-origin`.
+- Headers: CSP set per request by `apps/web/src/proxy.ts` with a fresh nonce: `default-src 'self'; script-src 'self' 'nonce-…' 'strict-dynamic'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.r2.cloudflarestorage.com; font-src 'self'; connect-src 'self' https://*.posthog.com https://*.sentry.io; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'` (+ `upgrade-insecure-requests` over HTTPS). A nonce is required because Next.js hydrates with inline scripts, which `default-src 'self'` alone would block; consequence: pages render dynamically (acceptable at this traffic). Static headers in `next.config.ts`: HSTS (2 years, preload), `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`, `X-Frame-Options: DENY`, `Permissions-Policy`.
 - CSRF: admin mutations require SameSite=Strict cookie and `Origin` header matching `APP_URL`.
 - Prompt injection: corpus text (transcripts, captions, comments) is untrusted and wrapped in `<untrusted_content>` tags; see EVAL_GUARDRAILS §3.
 - IP handling: `requester_ip_hash = sha256(IP_HASH_SALT + ip)`; raw IPs never stored.
@@ -838,7 +842,7 @@ Every model call goes through `packages/llm.callModel`, which reads `usage` (inc
 - **Web:** Vercel project rooted at `apps/web`, build `pnpm turbo build --filter=web`. Region `lhr1` (London) with Neon in `aws-eu-west-2`.
 - **Worker:** Railway service from `apps/worker/Dockerfile` (Node 24 slim + ffmpeg), one instance, restart policy always, health check `GET :8080/healthz`.
 - **CLI:** runs on the builder's machine against production DB for ingest/extract/evals (`.env.production.local`, never committed).
-- **Migrations:** `pnpm db:migrate` run by CI on merge to `main` before the Vercel production deploy is promoted; preview branches migrate their Neon branch.
+- **Migrations:** `pnpm db:migrate` run by CI on merge to `main` before the Vercel production deploy is promoted. Preview deploys migrate and seed their own Neon branch in `scripts/vercel-build.sh` (the build command in `apps/web/vercel.json`); production never seeds. On previews an unset `APP_URL` falls back to `https://$VERCEL_BRANCH_URL` (`previewAppUrl` in `apps/web/src/server/env-schema.ts`).
 - **CI/CD:** GitHub Actions — install → typecheck → lint → unit/integration (with Docker pgvector service) → build → Playwright against Vercel preview.
 - **Rollback:** Vercel "promote previous deployment"; Railway redeploy previous image; migrations are additive-only so code rollback is safe.
 - **Backups:** Neon point-in-time restore (7 days); before every eval sweep, `pnpm db:snapshot` creates a Neon branch named `snap-YYYYMMDD`.
@@ -866,3 +870,4 @@ Every model call goes through `packages/llm.callModel`, which reads `usage` (inc
 - **ADR-005 · Polling instead of SSE/WebSockets.** Context: Vercel function duration limits and low traffic. Decision: 1 s polling on `afterSeq`. Consequences: simple, robust; slightly more requests.
 - **ADR-006 · No media in public mode.** Context: copyright and platform terms. Decision: public evidence = excerpt + description + link to original. Consequences: less visual demo; the demo video (recorded privately) shows frames with permission.
 - **ADR-007 · Judge model differs from agent model.** Context: self-preference bias. Decision: Opus-class judge, Sonnet-class agent and baseline. Consequences: higher eval cost (bounded, §EVAL_GUARDRAILS 4).
+- **ADR-008 · A project MCP server for coding agents (`apps/mcp`).** Context: the build is done largely by coding agents, and the official Postgres MCP server is deprecated. Decision: a small stdio server using `@modelcontextprotocol/sdk` with read-only tools (`db_query` inside a READ ONLY transaction with a 5 s timeout and 200-row cap, `describe_table`, `list_investigations`, `run_trace`), local databases only unless explicitly overridden. Consequences: agents can inspect real state instead of guessing; no write path exists; it is a dev tool and is never deployed. Connector configs for Claude Code, Cursor and VS Code are documented in `docs/agents.md`.

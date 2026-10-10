@@ -97,7 +97,7 @@ Prices come from `packages/llm/src/pricing.ts`, verified against provider pricin
 | Not found / private | `NOT_FOUND`, `BRAND_NOT_FOUND` | 404 | no | 404 page or inline | info |
 | Conflict | `CONCURRENCY_LIMIT`, `NOT_CANCELLABLE`, `NOT_COMPLETED`, `OUTCOME_EXISTS`, `NOT_ELIGIBLE` | 409 | sometimes | specific message | info |
 | Rate limit | `RATE_LIMITED` | 429 | after `retryAfterSeconds` | banner with time | info |
-| Upstream | `MODEL_UNAVAILABLE`, `TRANSCRIBE_FAILED`, `STATS_UNAVAILABLE` | 502/503 or run error | yes (exp backoff 1/2/4 s + 0–250 ms jitter, max 3) | failed banner with code | error + Sentry |
+| Upstream / switched off | `MODEL_UNAVAILABLE`, `TRANSCRIBE_FAILED`, `STATS_UNAVAILABLE`, `LIVE_RUNS_DISABLED` | 502/503 or run error | yes (exp backoff 1/2/4 s + 0–250 ms jitter, max 3) | failed banner with code | error + Sentry |
 | Internal | `INTERNAL` | 500 | no | "Something broke on our side. It's been logged." | error + Sentry |
 
 - Code naming: SCREAMING_SNAKE, defined once in `packages/shared/src/errors.ts`.

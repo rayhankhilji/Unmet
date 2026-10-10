@@ -61,7 +61,8 @@ Do not introduce new frameworks, libraries, or services without recording an ADR
 │   │   ├── src/server/         # repositories access, policy.ts, env.ts (server-only)
 │   │   └── e2e/                # Playwright specs
 │   ├── worker/                 # queue consumer, Dockerfile
-│   └── cli/                    # pnpm commands: ingest, extract, embed, evals, run
+│   ├── cli/                    # pnpm commands: ingest, extract, embed, evals, run
+│   └── mcp/                    # read-only MCP server for coding agents (docs/agents.md)
 ├── packages/
 │   ├── shared/                 # Zod schemas, enums, error codes, API types
 │   ├── db/                     # Drizzle schema, migrations/, repos/ (asof.ts lives here)
