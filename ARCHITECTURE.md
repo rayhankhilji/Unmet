@@ -94,6 +94,7 @@ Versions are majors, verified against the npm registry in P0.T1 (exact versions 
 | `packages/db` | Drizzle schema, migrations, repositories, queue helpers | All tables | Typed repositories | Postgres | Contain HTTP or LLM code |
 | `packages/storage` | R2 put/get/presign | Bucket layout | `putObject`, `presignGet` | AWS S3 SDK | Presign when `PUBLIC_DEMO_MODE=true` |
 | `packages/shared` | Zod schemas, enums, error codes, API types | Contracts | Schemas + inferred types | Zod | Import any runtime package |
+| `apps/mcp` | Read-only MCP server for coding agents (ADR-008) | Dev tooling | stdio MCP tools | `pg`, `@modelcontextprotocol/sdk` | Write to any table; connect to a non-local database by default; be deployed |
 | `prompts/` | Versioned prompt files | Prompt text | Loaded by `packages/llm` | — | Be inlined in code |
 
 ## 4. Data Model
@@ -869,3 +870,4 @@ Every model call goes through `packages/llm.callModel`, which reads `usage` (inc
 - **ADR-005 · Polling instead of SSE/WebSockets.** Context: Vercel function duration limits and low traffic. Decision: 1 s polling on `afterSeq`. Consequences: simple, robust; slightly more requests.
 - **ADR-006 · No media in public mode.** Context: copyright and platform terms. Decision: public evidence = excerpt + description + link to original. Consequences: less visual demo; the demo video (recorded privately) shows frames with permission.
 - **ADR-007 · Judge model differs from agent model.** Context: self-preference bias. Decision: Opus-class judge, Sonnet-class agent and baseline. Consequences: higher eval cost (bounded, §EVAL_GUARDRAILS 4).
+- **ADR-008 · A project MCP server for coding agents (`apps/mcp`).** Context: the build is done largely by coding agents, and the official Postgres MCP server is deprecated. Decision: a small stdio server using `@modelcontextprotocol/sdk` with read-only tools (`db_query` inside a READ ONLY transaction with a 5 s timeout and 200-row cap, `describe_table`, `list_investigations`, `run_trace`), local databases only unless explicitly overridden. Consequences: agents can inspect real state instead of guessing; no write path exists; it is a dev tool and is never deployed. Connector configs for Claude Code, Cursor and VS Code are documented in `docs/agents.md`.

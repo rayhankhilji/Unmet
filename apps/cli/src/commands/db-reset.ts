@@ -1,12 +1,9 @@
 import { runMigrations } from "@unmet/db/migrate";
+import { isLocalDatabaseUrl } from "@unmet/shared/node";
 import pg from "pg";
 import type { CliBaseEnv } from "../env.ts";
 
-const LOCAL_HOSTS = new Set(["localhost", "127.0.0.1", "::1", "[::1]", "db"]);
-
-export function isLocalDatabase(url: string): boolean {
-  return LOCAL_HOSTS.has(new URL(url).hostname);
-}
+export const isLocalDatabase = isLocalDatabaseUrl;
 
 /**
  * Drops and recreates the schema, then migrates. Destructive, so it refuses any database

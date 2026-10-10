@@ -82,6 +82,11 @@ No blockers.
 | 2026-10-10 | Migrations are exported from `@unmet/db/migrate`, not the package index | Keeps migration files out of the web bundle | — |
 | 2026-10-10 | The /about pipeline diagram is an HTML ordered list, not a static SVG | Reflows to one column at 390 px and reads in order to screen readers; an SVG scaled to phone width made its text unreadable | DESIGN_SYSTEM §9.6 |
 | 2026-10-10 | /about shows a warning whenever every counted video is synthetic | Honesty on previews: no fixture should read as evidence about real products | — |
+| 2026-10-10 | Added `apps/mcp` (read-only project MCP server) and connector configs for Claude Code, Cursor, VS Code, Copilot and Gemini (`docs/agents.md`) | Requested by Rayhan; the official Postgres MCP server is deprecated | ARCHITECTURE ADR-008, §3; INSTRUCTIONS §4 |
+| 2026-10-10 | Sentry 11 collects request data, cookies, DB values and AI prompts by default; `SENTRY_DATA_COLLECTION` in `packages/shared` switches all of it off for web and worker | ARCHITECTURE §14: LLM payloads never go to Sentry | — |
+| 2026-10-10 | PostHog runs with memory persistence, no autocapture, no pageviews, no recordings | Only the events in ARCHITECTURE §8 are sent, and nothing needs a cookie banner | — |
+| 2026-10-10 | `loadLocalEnv` reads no files when `VERCEL` or `RAILWAY_ENVIRONMENT` is set | Prevents a missing production secret from silently falling back to a fake value in `.env.example` | — |
+| 2026-10-10 | CI skips pixel comparisons (`ignoreSnapshots` when `CI`) but runs every other assertion in the visual specs | Baselines are rendered on macOS; Linux font rasterisation differs. Linux baselines can be added later | TESTING_GUIDE §5 |
 | 2026-10-09 | G-PRIV-04: both providers are used via API accounts. Anthropic's commercial terms and OpenAI's API data policy exclude API inputs/outputs from model training by default; no opt-in will be enabled. Rayhan to confirm neither org has opted into data sharing when keys are created. | Privacy of creator content sent to providers | EVAL_GUARDRAILS §8 |
 
 ## Session Log
