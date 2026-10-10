@@ -1,7 +1,10 @@
 import { createEnv } from "@t3-oss/env-nextjs";
 import { EnvError } from "@unmet/shared";
 import { z } from "zod";
-import { refineWebEnv, webClientShape, webServerShape } from "./env-schema.ts";
+import { previewAppUrl, refineWebEnv, webClientShape, webServerShape } from "./env-schema.ts";
+
+const fallbackAppUrl = previewAppUrl(process.env);
+if (fallbackAppUrl) process.env.APP_URL = fallbackAppUrl;
 
 /** Validated once at boot; a missing variable stops the server with its name (G-SEC-09). */
 export const env = createEnv({

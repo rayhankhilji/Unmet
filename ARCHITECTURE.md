@@ -842,7 +842,7 @@ Every model call goes through `packages/llm.callModel`, which reads `usage` (inc
 - **Web:** Vercel project rooted at `apps/web`, build `pnpm turbo build --filter=web`. Region `lhr1` (London) with Neon in `aws-eu-west-2`.
 - **Worker:** Railway service from `apps/worker/Dockerfile` (Node 24 slim + ffmpeg), one instance, restart policy always, health check `GET :8080/healthz`.
 - **CLI:** runs on the builder's machine against production DB for ingest/extract/evals (`.env.production.local`, never committed).
-- **Migrations:** `pnpm db:migrate` run by CI on merge to `main` before the Vercel production deploy is promoted; preview branches migrate their Neon branch.
+- **Migrations:** `pnpm db:migrate` run by CI on merge to `main` before the Vercel production deploy is promoted. Preview deploys migrate and seed their own Neon branch in `scripts/vercel-build.sh` (the build command in `apps/web/vercel.json`); production never seeds. On previews an unset `APP_URL` falls back to `https://$VERCEL_BRANCH_URL` (`previewAppUrl` in `apps/web/src/server/env-schema.ts`).
 - **CI/CD:** GitHub Actions — install → typecheck → lint → unit/integration (with Docker pgvector service) → build → Playwright against Vercel preview.
 - **Rollback:** Vercel "promote previous deployment"; Railway redeploy previous image; migrations are additive-only so code rollback is safe.
 - **Backups:** Neon point-in-time restore (7 days); before every eval sweep, `pnpm db:snapshot` creates a Neon branch named `snap-YYYYMMDD`.

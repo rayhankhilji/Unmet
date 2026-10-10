@@ -5,10 +5,10 @@
 ## Status
 
 - **Current phase:** P0 — Foundation
-- **Current focus:** P0.T1 — Verify current stable versions and model IDs/prices
-- **Next action:** Look up current stable majors for Node, Next.js, Tailwind, Drizzle, Zod, Anthropic and OpenAI SDKs, plus current Claude model IDs and per-token prices; record them in Decisions below and in `packages/llm/src/pricing.ts`.
-- **Blocked:** none
-- **Last updated:** 2026-10-09 by Claude (docs generated)
+- **Current focus:** P0.T10 — Vercel + Neon preview (CI half done: PR #1 green)
+- **Next action:** Rayhan connects the repo to Vercel (root `apps/web`) and adds the Neon integration; then migrate + seed the preview branch and run the Phase 0 exit check against the preview URL (`PLAYWRIGHT_BASE_URL=<url> pnpm test:e2e`).
+- **Blocked:** B1 — preview deploy needs Rayhan's Vercel and Neon accounts
+- **Last updated:** 2026-10-10 by Claude
 
 ## Current Phase Checklist
 
@@ -23,7 +23,7 @@ Legend: `[ ]` open · `[~]` in progress · `[x]` done · `[!]` blocked
 - [x] P0.T7 — Design tokens, fonts, dark mode, AppShell, base components, contrast script (tests: `e2e/visual.spec.ts` 7/7 — 4 baselines at 1440/390 × light/dark with axe, theme persistence, no horizontal scroll at 390; component tests `Button.test.tsx`, `States.test.tsx` 5/5; `pnpm design:contrast` 60/60)
 - [x] P0.T8 — Fixture corpus and `pnpm db:seed` scenarios (tests: `apps/cli/test/seed.int.test.ts` 4/4 — row counts, run totals = event sums, claim evidence/number rules, repeatable + e2e eval fixtures; `packages/stats/src/snapshot.test.ts` 8/8 incl. T-F03-AC1/AC3/AC4 on the pure function)
 - [x] P0.T9 — Health route, `policy.ts`, admin session, request IDs, security headers (tests: T-F13-AC1 in `apps/web/test/api/investigations-create.int.test.ts`; `health`, `admin-session` (G-SEC-03/06/08), `policy` int tests — 21 total; `e2e/headers.spec.ts` 3/3; `scripts/check-policy.test.ts` 4/4; `pnpm check:policy` 0 violations)
-- [ ] P0.T10 — CI workflow, Vercel + Neon previews, Sentry + PostHog wiring (tests: green CI on PR)
+- [~] P0.T10 — CI workflow, Vercel + Neon previews, Sentry + PostHog wiring (tests: green CI on PR — run 38046477075: lint, typecheck, 147 unit/int tests with coverage, policy, gitleaks, audit, migrate + seed, build, 17/17 E2E. Open: Vercel + Neon preview, blocked on B1)
 - [x] P0.T11 — `/about` shell with stats block from seeded data (tests: T-F14-AC1 in `apps/web/test/api/corpus-stats.int.test.ts` 3/3; T-F14-AC2 + seeded-count check + nav in `e2e/about.spec.ts` 3/3; About baselines at 1440/390 × light/dark with axe)
 - [ ] P0.T12 — **(human)** Corpus sourcing decision + `data/collection-plan.md`
 - [ ] P0.T13 — **(human)** 3–5 interviews → `docs/research/interviews.md`
@@ -48,12 +48,13 @@ Phase 1 — Corpus (F-01, F-14):
 
 | ID | Task | Description | Tried | Hypotheses | Needs | Opened |
 |---|---|---|---|---|---|---|
-
-No blockers.
+| B1 | P0.T10 | Vercel project and Neon preview database need Rayhan's accounts; creating them and accepting the Neon integration terms is not something an agent should do | — | — | Rayhan: import the repo in Vercel with root directory `apps/web` (install and build commands come from `apps/web/vercel.json`); add the Neon integration with a branch per preview (it sets `DATABASE_URL` and `DATABASE_URL_UNPOOLED`); on Preview set `ADMIN_TOKEN`, `ADMIN_COOKIE_SECRET` and `IP_HASH_SALT` (32+ random characters each, e.g. `openssl rand -hex 32`) and `LIVE_RUNS_ENABLED=false`; then authorise the `vercel` and `neon` MCP servers so the exit check can be run against the preview | 2026-10-10 |
 
 ## Decisions & Deviations
 
 | Date | Decision | Reason | Docs updated |
+| 2026-10-10 | Vercel builds through `scripts/vercel-build.sh`: previews migrate and seed their Neon branch, then build only `web`; production never seeds. On previews an unset `APP_URL` falls back to the branch URL | ARCHITECTURE §13 says previews migrate their own branch but nothing did; the origin check needs `APP_URL` to match a URL that changes per preview | ARCHITECTURE §13 |
+| 2026-10-10 | E2E database reset and seed run in Playwright's `webServer` command; `globalSetup` removed | Playwright starts `webServer` before `globalSetup`, so on a clean runner the health check polled a database that did not exist and timed out (first two CI runs) | TESTING_GUIDE §2 |
 |---|---|---|---|
 | 2026-10-09 | Product scoped to demand-gap detection (complaints, wishes, workarounds) with sceptic pass, brand fit and demand test; creator matching reduced to a P1 handoff | Strongest, checkable slice; avoids rebuilding Plot's Creator Intelligence | PRD §5, §6 |
 | 2026-10-09 | TypeScript end to end; Postgres-backed queue; polling for live events | Solo builder, low volume, one contract package | ARCHITECTURE ADR-001, ADR-002, ADR-005 |
@@ -90,6 +91,12 @@ No blockers.
 | 2026-10-09 | G-PRIV-04: both providers are used via API accounts. Anthropic's commercial terms and OpenAI's API data policy exclude API inputs/outputs from model training by default; no opt-in will be enabled. Rayhan to confirm neither org has opted into data sharing when keys are created. | Privacy of creator content sent to providers | EVAL_GUARDRAILS §8 |
 
 ## Session Log
+
+### 2026-10-10 — Session 1 (Phase 0)
+- Done: P0.T1–T9, T11; CI half of T10; `apps/mcp` read-only MCP server and agent connector configs (ADR-008, `docs/agents.md`); README with banner.
+- Tests: 147 unit/integration, 17 E2E, contrast 60/60, policy 0 violations; CI green on PR #1.
+- Notes: Doc conflict for Rayhan — INSTRUCTIONS §8 and ARCHITECTURE §6.2 order run creation as schema → passcode, while G-SEC-01 puts the policy check first. Implemented schema → passcode; confirm or swap.
+- Next: B1 (Vercel + Neon), then the Phase 0 exit check. P0.T12 and P0.T13 are Rayhan's.
 
 ### 2026-10-09 — Session 0 (docs)
 - Done: Generated PRD, ARCHITECTURE, INSTRUCTIONS, DESIGN_SYSTEM, EVAL_GUARDRAILS, TESTING_GUIDE, ROADMAP, TASK_LOG, CLAUDE.md, AGENTS.md.

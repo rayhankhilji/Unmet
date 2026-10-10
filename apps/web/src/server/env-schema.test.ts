@@ -1,6 +1,6 @@
 import { EnvError } from "@unmet/shared";
 import { describe, expect, it } from "vitest";
-import { parseWebEnv, webEnvSchema } from "./env-schema.ts";
+import { parseWebEnv, previewAppUrl, webEnvSchema } from "./env-schema.ts";
 
 const valid = {
   APP_URL: "http://localhost:3000",
@@ -44,5 +44,22 @@ describe("web env", () => {
     expect(() => parseWebEnv({ ...valid, RATE_LIMIT_DRIVER: "upstash" })).toThrow(
       /UPSTASH_REDIS_REST_URL.*UPSTASH_REDIS_REST_TOKEN/,
     );
+  });
+});
+
+describe("previewAppUrl", () => {
+  const preview = { VERCEL_ENV: "preview", VERCEL_BRANCH_URL: "unmet-git-p0.vercel.app" };
+
+  it("uses the branch URL on Vercel previews when APP_URL is unset", () => {
+    expect(previewAppUrl(preview)).toBe("https://unmet-git-p0.vercel.app");
+    expect(previewAppUrl({ VERCEL_ENV: "preview", VERCEL_URL: "unmet-abc.vercel.app" })).toBe(
+      "https://unmet-abc.vercel.app",
+    );
+  });
+
+  it("never overrides an explicit APP_URL or applies outside previews", () => {
+    expect(previewAppUrl({ ...preview, APP_URL: "https://unmet.example" })).toBeUndefined();
+    expect(previewAppUrl({ ...preview, VERCEL_ENV: "production" })).toBeUndefined();
+    expect(previewAppUrl({ VERCEL_BRANCH_URL: "x.vercel.app" })).toBeUndefined();
   });
 });

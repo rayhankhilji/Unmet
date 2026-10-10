@@ -58,6 +58,17 @@ export const webEnvSchema = z
 
 export type WebEnv = z.output<typeof webEnvSchema>;
 
+/**
+ * Vercel gives every preview its own URL, so a fixed APP_URL can't match. On previews only,
+ * an unset APP_URL falls back to the branch URL (stable across pushes to one branch).
+ * Production always needs APP_URL set explicitly.
+ */
+export function previewAppUrl(source: Record<string, string | undefined>): string | undefined {
+  if (source.APP_URL || source.VERCEL_ENV !== "preview") return undefined;
+  const host = source.VERCEL_BRANCH_URL || source.VERCEL_URL;
+  return host ? `https://${host}` : undefined;
+}
+
 export function parseWebEnv(source: Record<string, string | undefined>): WebEnv {
   return parseEnv(webEnvSchema, source, "web");
 }
