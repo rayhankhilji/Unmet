@@ -24,7 +24,7 @@ Legend: `[ ]` open · `[~]` in progress · `[x]` done · `[!]` blocked
 - [x] P0.T8 — Fixture corpus and `pnpm db:seed` scenarios (tests: `apps/cli/test/seed.int.test.ts` 4/4 — row counts, run totals = event sums, claim evidence/number rules, repeatable + e2e eval fixtures; `packages/stats/src/snapshot.test.ts` 8/8 incl. T-F03-AC1/AC3/AC4 on the pure function)
 - [x] P0.T9 — Health route, `policy.ts`, admin session, request IDs, security headers (tests: T-F13-AC1 in `apps/web/test/api/investigations-create.int.test.ts`; `health`, `admin-session` (G-SEC-03/06/08), `policy` int tests — 21 total; `e2e/headers.spec.ts` 3/3; `scripts/check-policy.test.ts` 4/4; `pnpm check:policy` 0 violations)
 - [ ] P0.T10 — CI workflow, Vercel + Neon previews, Sentry + PostHog wiring (tests: green CI on PR)
-- [ ] P0.T11 — `/about` shell with stats block from seeded data (tests: T-F14-AC1, T-F14-AC2)
+- [x] P0.T11 — `/about` shell with stats block from seeded data (tests: T-F14-AC1 in `apps/web/test/api/corpus-stats.int.test.ts` 3/3; T-F14-AC2 + seeded-count check + nav in `e2e/about.spec.ts` 3/3; About baselines at 1440/390 × light/dark with axe)
 - [ ] P0.T12 — **(human)** Corpus sourcing decision + `data/collection-plan.md`
 - [ ] P0.T13 — **(human)** 3–5 interviews → `docs/research/interviews.md`
 
@@ -80,6 +80,8 @@ No blockers.
 | 2026-10-10 | Web logs are JSON lines written directly to stdout/stderr (`src/server/log.ts`), not pino | Avoids bundling pino into Next route handlers; same fields | ARCHITECTURE §14 unchanged in substance |
 | 2026-10-10 | `POST /investigations` stops after the passcode check with `LIVE_RUNS_DISABLED` until P4.T6 adds limits, budget and the insert | Route and its 401 path exist (T-F13-AC1) without opening an unguarded run path | — |
 | 2026-10-10 | Migrations are exported from `@unmet/db/migrate`, not the package index | Keeps migration files out of the web bundle | — |
+| 2026-10-10 | The /about pipeline diagram is an HTML ordered list, not a static SVG | Reflows to one column at 390 px and reads in order to screen readers; an SVG scaled to phone width made its text unreadable | DESIGN_SYSTEM §9.6 |
+| 2026-10-10 | /about shows a warning whenever every counted video is synthetic | Honesty on previews: no fixture should read as evidence about real products | — |
 | 2026-10-09 | G-PRIV-04: both providers are used via API accounts. Anthropic's commercial terms and OpenAI's API data policy exclude API inputs/outputs from model training by default; no opt-in will be enabled. Rayhan to confirm neither org has opted into data sharing when keys are created. | Privacy of creator content sent to providers | EVAL_GUARDRAILS §8 |
 
 ## Session Log

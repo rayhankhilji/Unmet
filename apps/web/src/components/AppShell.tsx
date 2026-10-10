@@ -3,8 +3,8 @@ import type { ReactNode } from "react";
 import { NavLink } from "@/components/NavLink";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
-// Nav lists only pages that exist, so the shell never links to a dead end. About, Evals
-// and "Run live" join as their pages ship (ROADMAP P0.T11, P5.T7, P4.T6).
+// Nav lists only pages that exist, so the shell never links to a dead end. Evals and
+// "Run live" join as their pages ship (ROADMAP P5.T7, P4.T6).
 
 export function AppShell({ children }: { children: ReactNode }) {
   return (
@@ -26,6 +26,7 @@ export function AppShell({ children }: { children: ReactNode }) {
           </Link>
           <nav aria-label="Main" className="flex items-center gap-4 md:gap-6">
             <NavLink href="/">Investigations</NavLink>
+            <NavLink href="/about">About</NavLink>
             <ThemeToggle />
           </nav>
         </div>

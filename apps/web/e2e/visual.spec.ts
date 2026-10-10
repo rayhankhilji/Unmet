@@ -17,6 +17,18 @@ for (const width of WIDTHS) {
       await expectNoA11yViolations(page);
       await expect(page).toHaveScreenshot(`home-default-${width}-${theme}.png`, { fullPage: true });
     });
+
+    test(`about at ${width}px, ${theme}`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 900 });
+      await page.emulateMedia({ colorScheme: theme, reducedMotion: "reduce" });
+      await page.goto("/about");
+      await expect(page.getByText("Videos", { exact: true })).toBeVisible();
+      await page.evaluate(() => document.fonts.ready);
+      await expectNoA11yViolations(page);
+      await expect(page).toHaveScreenshot(`about-default-${width}-${theme}.png`, {
+        fullPage: true,
+      });
+    });
   }
 }
 

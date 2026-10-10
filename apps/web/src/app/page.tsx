@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function HomePage() {
   return (
     <div className="mx-auto max-w-page px-4 pt-16 pb-24 md:px-6 md:pt-24">
@@ -10,6 +12,14 @@ export default function HomePage() {
           comments &mdash; and finds the complaints, wishes and workarounds that point at a product
           nobody sells. Every number comes from a query, every claim links to the moment in the
           video that supports it, and each need is argued against before it is recommended.
+        </p>
+        <p className="mt-6">
+          <Link
+            href="/about"
+            className="rounded-sm text-body text-info underline underline-offset-4 decoration-1 hover:decoration-2"
+          >
+            How it works
+          </Link>
         </p>
       </div>
     </div>
